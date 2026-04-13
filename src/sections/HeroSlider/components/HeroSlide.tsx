@@ -12,7 +12,7 @@ export const HeroSlide = (props: HeroSlideProps) => {
  <section
  role="group"
 aria-label={props.ariaLabel}
- className="relative text-white items-stretch bg-stone-900 box-border caret-transparent flex flex-col shrink-0 justify-end min-h-[600px] min-w-[auto] w-full md:min-h-[1000px]"
+ className="relative text-white items-stretch bg-stone-900 box-border caret-transparent flex flex-col shrink-0 justify-end min-h-[700px] min-w-[auto] w-full md:min-h-[1000px]"
  >
  <div
  className={`relative box-border caret-transparent min-h-[auto] min-w-[auto] ${props.overlayClass}`}

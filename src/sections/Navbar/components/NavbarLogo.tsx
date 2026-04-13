@@ -13,7 +13,7 @@ export const NavbarLogo = (props: NavbarLogoProps) => {
                 className={`box-border caret-transparent max-w-full ${props.divClassName}`}
             >
                 <img
-                    src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-1.svg"
+                    src="./public/img/logo-dai.png"
                     alt="Icon"
                     className="box-border caret-transparent h-full align-baseline w-full"
                 />

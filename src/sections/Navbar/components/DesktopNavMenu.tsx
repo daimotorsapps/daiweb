@@ -1,12 +1,22 @@
 import { useState } from "react";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+/* import all the icons in Free Solid, Free Regular, and Brands styles */
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+library.add(fas, far, fab);
+
 export const DesktopNavMenu = () => {
     const [modelsOpen, setModelsOpen] = useState(false);
     const navLinks = [
         { href: "#modelos", label: "Comparar" },
         { href: "#inicio", label: "Financiamiento" },
         { href: "#noticias", label: "Noticias" },
-        { href: "#inicio", label: "Nosotros" },
-        { href: "#concesionarios", label: "Concesionarios" },
+        { href: "#inicio", label: "Nosotros" },        
     ];
     return (
         <nav
@@ -56,9 +66,11 @@ export const DesktopNavMenu = () => {
                     <div className="box-border h-full min-h-0 min-w-0 text-left w-full md:min-h-auto md:min-w-auto">
                         <button className="relative items-center box-border gap-x-[10.0982px] flex basis-0 grow h-full justify-start -outline-offset-2 text-nowrap align-top w-full z-[2] mx-auto px-[14.0982px] md:gap-x-[11.7143px] md:px-[15.7143px] transition-opacity duration-200 hover:opacity-70">
                             <div className="box-border min-h-0 min-w-0 text-nowrap w-[17.6px] md:min-h-auto md:min-w-auto">
-                                <img
+                                {/* <img
                                     src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-3.svg" alt="Buscar" className="box-border h-full text-nowrap align-baseline w-full"
-                                />
+                                /> */}
+
+                                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                             </div>
                         </button>
                     </div>
@@ -73,4 +85,4 @@ export const DesktopNavMenu = () => {
             </ul>
         </nav >
     );
-};
+}

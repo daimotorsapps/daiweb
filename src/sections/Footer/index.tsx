@@ -13,14 +13,14 @@ export const Footer = () => {
  <FooterCopyright />
  <div className="box-border caret-transparent hidden"></div>
  <a
- href="https://wa.me/+15557809011"
+ href="https://wa.me/+584146582009"
  target="_blank"
  rel="noopener noreferrer"
  aria-label="Contactar por WhatsApp"
  className="fixed items-center bg-green-500 box-border flex h-16 justify-center max-w-full outline-offset-[3px] w-16 z-[999] p-4 rounded-full right-8 bottom-8 shadow-lg transition-all duration-200 hover:bg-green-400 hover:scale-110 active:scale-95"
  >
  <img
- src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/69a91200252a01253143cf2b_Vector.svg"
+ src="./public/img/wslogo.svg"
  alt=""
  className="box-border caret-transparent max-w-full min-h-[auto] min-w-[auto] object-cover w-full"
  />
