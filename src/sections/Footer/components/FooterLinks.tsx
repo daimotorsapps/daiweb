@@ -10,14 +10,14 @@ import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; export
                 title="CONTACTO"
                 links={[{ href: "/cotizar", label: "Cotizar" }, { href: "/financiamiento", label: "Financiación" },]}
             />
-            <FooterColumn
+            {/* <FooterColumn
                 title="ENCUÉNTRANOS"
                 links={[{ href: "https://maps.app.goo.gl/K6h3bZhmiyK1rFEM8", label: "Av. Las Delicias, Edif. Dai Motors" },]}
-            />
+            /> */}
 
 
             {/* Columna de Ubicación con Mapa */}
-            <div className="flex flex-col gap-y-[16px]">
+            {/* <div className="flex flex-col gap-y-[16px]">
                 <h2 className="font-bold text-[16px] uppercase tracking-wide">
                     Ubicación
                 </h2>
@@ -38,7 +38,7 @@ import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; export
                 <p className="text-[14px] text-gray-500 leading-tight">
                     Av. 15 Las Delicias, Maracaibo.
                 </p>
-            </div>
+            </div> */}
 
 
 
