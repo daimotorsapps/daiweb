@@ -11,8 +11,8 @@ const slides: Slide[] = [
  ariaLabel: "1 / 7",
  desktopSrc: "./public/img/Home-Creta.jpg",
  mobileSrc: "./public/img/Home-Creta-Mobile.jpg",
- ctaHref: "#modelos",
- ctaText: "MÁS INFORMACIÓN",
+ /* ctaHref: "#modelos",
+ ctaText: "MÁS INFORMACIÓN", */
  },
 {
  ariaLabel: "2 / 7",
@@ -28,29 +28,29 @@ const slides: Slide[] = [
  ariaLabel: "4 / 7",
  desktopSrc: "./public/img/grand-i10-gl.jpg",
  mobileSrc: "./public/img/grand-i10-gl-mobile.jpg",
- ctaHref: "#inicio",
- ctaText: "Cotizar",
+ /* ctaHref: "#inicio",
+ ctaText: "Cotizar", */
  },
 {
  ariaLabel: "5 / 7",
  desktopSrc: "./public/img/grand-i10-sedan.jpg",
  mobileSrc: "./public/img/grand-i10-sedan-mobile.jpg",
- ctaHref: "#inicio",
- ctaText: "Cotizar",
+ /* ctaHref: "#inicio",
+ ctaText: "Cotizar", */
  },
 {
  ariaLabel: "6 / 7",
  desktopSrc: "./public/img/tucson-premium.jpg",
  mobileSrc: "./public/img/tucson-premium-mobile.jpg",
- ctaHref: "#inicio",
- ctaText: "Cotizar",
+ /* ctaHref: "#inicio",
+ ctaText: "Cotizar", */
  },
 {
  ariaLabel: "7 / 7",
  desktopSrc: "./public/img/grand-i10-gl-mt.jpg",
  mobileSrc: "./public/img/grand-i10-gl-mt-mobile.jpg",
- ctaHref: "#inicio",
- ctaText: "Cotizar",
+/*  ctaHref: "#inicio",
+ ctaText: "Cotizar", */
  },
 ];
 

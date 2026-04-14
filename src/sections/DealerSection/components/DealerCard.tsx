@@ -24,7 +24,7 @@ export const DealerCard = (props: DealerCardProps) => {
  className="absolute box-border h-full max-w-full object-cover w-full inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
  />
  </div>
- <div className="relative box-border min-h-auto min-w-auto z-[1]">
+ {/* <div className="relative box-border min-h-auto min-w-auto z-[1]">
  <h3 className="text-[28.1964px] font-medium box-border flow-root leading-[31.0161px] mb-[20.1964px] md:text-[31.4286px] md:leading-[34.5714px] md:mb-[23.4286px]">
  {props.title}
  </h3>
@@ -43,7 +43,7 @@ export const DealerCard = (props: DealerCardProps) => {
  </div>
  </a>
  </div>
- </div>
+ </div> */}
  </div>
  </div>
  </div>

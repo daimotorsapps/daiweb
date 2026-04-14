@@ -56,7 +56,7 @@ export const NewsSection = () => {
                                             className="absolute bg-transparent caret-transparent hidden h-full outline-offset-[3px] w-full p-0 inset-[0%]"
                                         ></button>
                                     </div> */}
-                                    <h3 className="text-xl ml-10 font-medium mb-4 font-hyundai_sans w-full h-full text-black   ">
+                                    <h3 className="text-xl ml-10 font-medium mb-4 font-hyundai_sans cursor-pointer w-50 h-full text-black bg-transparent border-l-stone-900 w-full border-b-stone-900/20 transition-all duration-200 hover:opacity-70  ">
                                         Novedades de nuestro Instagram
                                     </h3>
                                     <div className="col-span-2  min-h-[600px]  p-6 border-r border-gray-100">
@@ -195,7 +195,7 @@ export const NewsSection = () => {
 
 
                     <div className="col-span-2 md:col-span-7 flex flex-col ">
-                        <h2 className="font-bold font-medium text-xl mb-6  tracking-wide  relative bg-transparent border-l-stone-900 border-r-stone-900 border-t-stone-900 block min-w-40 -outline-offset-2 w-full p-[20.1964px] border-b border-b-stone-900/20 transition-all duration-200 md:p-[23.4286px] hover:opacity-70">
+                        <h2 className="font-bold font-medium text-xl mb-6  cursor-pointer tracking-wide bg-transparent border-l-stone-900 border-b-stone-900/20 transition-all duration-200 hover:opacity-70 ">
                             Ubicación
                         </h2>
                         {/* Área del Mapa */}
@@ -203,7 +203,7 @@ export const NewsSection = () => {
 
                             <iframe
                                 title="Ubicación del negocio"
-                                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d2077.0463639292893!2d-71.60778267517432!3d10.661657321984306!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sve!4v1776175361893!5m2!1ses!2sve"
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2077.0463639292893!2d-71.60778267517432!3d10.661657321984306!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8998ef7a37e3b3%3A0xd72c9490243bc414!2sDai%20Motors%2C%20S.A.!5e0!3m2!1ses!2sve!4v1776195462767!5m2!1ses!2sve"
                                 className="w-full h-full border-0"
                                 allowFullScreen={false}
                                 loading="lazy"
