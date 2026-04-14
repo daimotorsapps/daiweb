@@ -4,13 +4,13 @@ export const NewsSection = () => {
 
 
     useEffect(() => {
-        // Cargamos el script de Behold de forma dinámica al montar el componente
+        //script de Behold de forma dinámica
         const script = document.createElement("script");
         script.type = "module";
         script.src = "https://w.behold.so/widget.js";
         document.head.append(script);
 
-        // Limpieza opcional al desmontar el componente
+
         return () => {
             script.remove();
         };
@@ -24,7 +24,7 @@ export const NewsSection = () => {
                 className="box-border caret-transparent gap-x-0 grid flex-col auto-cols-[minmax(0px,1fr)] grid-cols-[repeat(2,minmax(0px,1fr))] grid-rows-[auto] min-h-[auto] min-w-[auto] gap-y-0 w-full md:grid-cols-[repeat(12,minmax(0px,1fr))]"
             >
                 <div className="box-border caret-transparent contents">
-                    <div className="items-start box-border caret-transparent col-end-[span_7] justify-start min-h-[auto] min-w-[auto] w-full">
+                    <div className="items-start box-border caret-transparent col-end-[span_5] justify-center min-h-[600px] min-w-[auto] w-full">
                         <div className="box-border caret-transparent h-full">
                             <div role="list" className="box-border caret-transparent h-full">
                                 <div
@@ -56,15 +56,15 @@ export const NewsSection = () => {
                                             className="absolute bg-transparent caret-transparent hidden h-full outline-offset-[3px] w-full p-0 inset-[0%]"
                                         ></button>
                                     </div> */}
-                                    <h3 className="text-xl ml-10 font-medium mb-4 font-hyundai_sans text-black">
-                                        NOVEDADES DE INSTAGRAM
+                                    <h3 className="text-xl ml-10 font-medium mb-4 font-hyundai_sans w-full h-full text-black   ">
+                                        Novedades de nuestro Instagram
                                     </h3>
-                                    <div className="col-span-2 md:col-span-7 p-6 border-r border-gray-100">
+                                    <div className="col-span-2  min-h-[600px]  p-6 border-r border-gray-100">
 
-                                        <div className="w-full h-full px-2 md:px-4">
+                                        <div className="w-full h-full md:px-4">
                                             <div
                                                 data-behold-id="RZKHvgNuxaWJWL2kXFBA"
-                                                className="behold-container w-full"
+                                                className="behold-container min-h-[700px] w-full"
                                             ></div>
                                         </div>
 
@@ -194,12 +194,12 @@ export const NewsSection = () => {
 
 
 
-                    <div className="col-span-2 md:col-span-5 flex flex-col">
-                        <h2 className="font-bold text-[16px] uppercase tracking-wide">
+                    <div className="col-span-2 md:col-span-7 flex flex-col ">
+                        <h2 className="font-bold font-medium text-xl mb-6  tracking-wide  relative bg-transparent border-l-stone-900 border-r-stone-900 border-t-stone-900 block min-w-40 -outline-offset-2 w-full p-[20.1964px] border-b border-b-stone-900/20 transition-all duration-200 md:p-[23.4286px] hover:opacity-70">
                             Ubicación
                         </h2>
                         {/* Área del Mapa */}
-                        <div className="h-64 md:h-full min-h-[300px] w-full bg-neutral-400">
+                        <div className="h-64 md:h-full md:h-[590px] w-full bg-neutral-400">
 
                             <iframe
                                 title="Ubicación del negocio"

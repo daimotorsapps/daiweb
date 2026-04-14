@@ -13,10 +13,10 @@ library.add(fas, far, fab);
 export const DesktopNavMenu = () => {
     const [modelsOpen, setModelsOpen] = useState(false);
     const navLinks = [
-        { href: "#modelos", label: "Comparar" },
-        { href: "#inicio", label: "Financiamiento" },
-        { href: "#noticias", label: "Noticias" },
-        { href: "#inicio", label: "Nosotros" },        
+        /* { href: "#modelos", label: "Comparar" },
+        { href: "#inicio", label: "Financiamiento" }, */
+        { href: "#novedades", label: "Novedades" },
+        { href: "#footer", label: "Nosotros" },        
     ];
     return (
         <nav
@@ -63,23 +63,23 @@ export const DesktopNavMenu = () => {
                 ))} </ul>
             <ul role="list" className="box-border flex shrink-0 justify-start list-none min-h-0 min-w-0 pl-0 md:min-h-auto md:min-w-auto" >
                 <li className="box-border flex min-h-0 min-w-0 md:min-h-auto md:min-w-auto">
-                    <div className="box-border h-full min-h-0 min-w-0 text-left w-full md:min-h-auto md:min-w-auto">
+                    {/* <div className="box-border h-full min-h-0 min-w-0 text-left w-full md:min-h-auto md:min-w-auto">
                         <button className="relative items-center box-border gap-x-[10.0982px] flex basis-0 grow h-full justify-start -outline-offset-2 text-nowrap align-top w-full z-[2] mx-auto px-[14.0982px] md:gap-x-[11.7143px] md:px-[15.7143px] transition-opacity duration-200 hover:opacity-70">
                             <div className="box-border min-h-0 min-w-0 text-nowrap w-[17.6px] md:min-h-auto md:min-w-auto">
-                                {/* <img
+                                 <img
                                     src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-3.svg" alt="Buscar" className="box-border h-full text-nowrap align-baseline w-full"
-                                /> */}
+                                /> 
 
                                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                             </div>
                         </button>
-                    </div>
+                    </div> */}
                 </li>
                 <li className="relative items-start box-border flex flex-col justify-center min-h-0 min-w-0 text-center z-[2] md:min-h-auto md:min-w-auto">
                     <div className="relative box-border min-h-0 min-w-0 md:min-h-auto md:min-w-auto">
-                        <a href="#inicio" className="relative text-white items-center bg-[rgb(14,43,92)] box-border gap-x-2 flex h-full justify-center gap-y-2 align-middle border px-6 py-[14.4px] border-solid border-[rgb(14,43,92)] transition-all duration-200 hover:bg-[rgb(25,60,120)] hover:border-[rgb(25,60,120)] active:scale-95" >
+                        {/* <a href="#inicio" className="relative text-white items-center bg-[rgb(14,43,92)] box-border gap-x-2 flex h-full justify-center gap-y-2 align-middle border px-6 py-[14.4px] border-solid border-[rgb(14,43,92)] transition-all duration-200 hover:bg-[rgb(25,60,120)] hover:border-[rgb(25,60,120)] active:scale-95" >
                             <div className="relative box-border flow-root min-h-0 min-w-0 md:min-h-auto md:min-w-auto"> Cotizar </div>
-                        </a>
+                        </a> */}
                     </div>
                 </li>
             </ul>

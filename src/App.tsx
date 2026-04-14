@@ -21,11 +21,14 @@ export const App = () => {
           <section id="concesionarios">
             <DealerSection />
           </section>
-          <section id="noticias">
+          <section id="novedades">
             <NewsSection />
           </section>
         </main>
-        <Footer />
+        <section id="footer">
+          <Footer />
+        </section>
+        
       </div>
     </body>
   );
