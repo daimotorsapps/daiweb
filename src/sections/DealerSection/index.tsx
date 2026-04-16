@@ -1,4 +1,5 @@
-import { DealerCard } from "@/sections/DealerSection/components/DealerCard";
+import { DealerCard } from "./components/DealerCard";
+
 export const DealerSection = () => {
 return ( <section className="relative items-stretch bg-gray-200 box-border caret-transparent flex flex-col justify-center min-h-[auto] min-w-[auto]">
 <div className="relative box-border caret-transparent h-[66.3571px] min-h-[auto] min-w-[auto] md:h-[105.143px]"></div>
@@ -9,7 +10,8 @@ role="none" className="box-border caret-transparent gap-x-[16.7857px] flex flex-
 
 {/*  FRENTE */}
 <DealerCard
-imageSrc="./public/img/galery/frente.jpeg" eyebrowText="Eyebrow Text Here"
+imageSrc="./public/img/galery/frente.jpeg" 
+eyebrowText="Eyebrow Text Here"
 title="Frente" /* description="Busca nuestros concesionarios oficiales." buttonText="Buscar"
 linkHref="https://hyundai-vzla.webflow.io/concesionarios?tipo=Concesionarios"
 innerLinkClassName="absolute box-border caret-transparent block h-full max-w-full outline-offset-[3px] w-full inset-[0%]"

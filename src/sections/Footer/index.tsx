@@ -1,6 +1,7 @@
-import { FooterBrand } from "@/sections/Footer/components/FooterBrand";
-import { FooterLinks } from "@/sections/Footer/components/FooterLinks";
-import { FooterCopyright } from "@/sections/Footer/components/FooterCopyright";
+import { FooterBrand } from "./components/FooterBrand";
+import { FooterCopyright } from "./components/FooterCopyright";
+
+//import { FooterLinks } from "@/sections/Footer/components/FooterLinks";
 export const Footer = () => {
  return (
  <footer className="text-white bg-blue-950 box-border caret-transparent min-h-[auto] min-w-[auto]">

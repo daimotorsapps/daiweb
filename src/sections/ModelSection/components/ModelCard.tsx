@@ -11,7 +11,7 @@ export type ModelCardProps = {
  motor: string;
  potencia: string;
  torque: string;
- cotizarHref: string;
+ cotizarHref?: string;
  fichaTecnicaHref: string;
  showExtraDiv?: boolean;
 };

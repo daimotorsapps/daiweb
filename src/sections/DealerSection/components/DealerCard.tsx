@@ -2,11 +2,11 @@ export type DealerCardProps = {
  imageSrc: string;
  eyebrowText: string;
  title: string;
- description: string;
- buttonText: string;
- linkHref: string;
- innerLinkClassName: string;
- innerButtonClassName: string;
+ description?: string;
+ buttonText?: string;
+ linkHref?: string;
+ innerLinkClassName?: string;
+ innerButtonClassName?: string;
 };
 export const DealerCard = (props: DealerCardProps) => {
  return (

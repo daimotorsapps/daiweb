@@ -1,4 +1,6 @@
-import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; export const FooterLinks = () => {
+//import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; 
+
+export const FooterLinks = () => {
    
    
    

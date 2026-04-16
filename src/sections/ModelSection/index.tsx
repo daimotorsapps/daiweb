@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ModelCard } from "@/sections/ModelSection/components/ModelCard";
+import { ModelCard } from "./components/ModelCard";
 
 type Tab = "hatchback" | "sedan" | "suv" | "mvp";
 type CarModel = {
