@@ -7,7 +7,7 @@ export const Footer = () => {
  <div className="relative box-border caret-transparent gap-x-[41.1786px] flex flex-col justify-center max-w-[1440px] gap-y-[41.1786px] w-[calc(100%_-_35.1429px)] z-[1] mx-auto py-[66.3571px] md:gap-x-[60.5714px] md:gap-y-[60.5714px] md:w-[calc(100%_-_86.8571px)] md:py-[105.143px]" >
  <div className="items-stretch box-border caret-transparent gap-x-[16.7857px] flex flex-col auto-cols-[minmax(0px,1fr)] grid-cols-[repeat(12,minmax(0px,1fr))] grid-rows-[auto] justify-between min-h-[auto] min-w-[auto] gap-y-[41.1786px] md:gap-x-[29.7143px] md:grid md:gap-y-[60.5714px]" >
  <FooterBrand />
- <FooterLinks />
+ {/* <FooterLinks /> */}
  </div>
  </div>
  <FooterCopyright />

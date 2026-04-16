@@ -105,7 +105,7 @@ className={`relative box-border caret-transparent shrink-0 list-none w-[330px] m
 <div className="absolute bg-white/30 box-border caret-transparent h-[60px] w-[0.5px] right-0"></div>
  </div>
 <div className="relative text-white/60 items-center box-border caret-transparent flex flex-col justify-center text-center px-[28.1964px] py-[20.1964px] md:px-[31.4286px] md:py-[23.4286px] min-h-[auto] min-w-[auto]" >
- <div className="relative box-border caret-transparent w-full mb-[10.0982px] md:mb-[11.7143px] min-h-[auto] min-w-[auto]">
+ {/* <div className="relative box-border caret-transparent w-full mb-[10.0982px] md:mb-[11.7143px] min-h-[auto] min-w-[auto]">
  <div className="absolute box-border caret-transparent h-full w-full z-[3] inset-[0%]">
  <a
  href={props.cotizarHref}
@@ -125,7 +125,7 @@ className="absolute bg-transparent caret-transparent hidden h-full outline-offse
  <div className="absolute box-border caret-transparent h-[1.504px] pointer-events-none origin-[100%_100%] bottom-[0%] inset-x-[0%]"></div>
  )}
  </div>
- </div>
+ </div> */}
 <div className="relative box-border caret-transparent w-full min-h-[auto] min-w-[auto]">
  <div className="absolute box-border caret-transparent h-full w-full z-[3] inset-[0%]">
  <a

@@ -24,7 +24,7 @@ export const NewsSection = () => {
                 className="box-border caret-transparent gap-x-0 grid flex-col auto-cols-[minmax(0px,1fr)] grid-cols-[repeat(2,minmax(0px,1fr))] grid-rows-[auto] min-h-[auto] min-w-[auto] gap-y-0 w-full md:grid-cols-[repeat(12,minmax(0px,1fr))]"
             >
                 <div className="box-border caret-transparent contents">
-                    <div className="items-start box-border caret-transparent col-end-[span_5] justify-center min-h-[600px] min-w-[auto] w-full">
+                    <div className="items-start box-border caret-transparent col-end-[span_7] justify-center min-h-[600px] min-w-[auto] w-full">
                         <div className="box-border caret-transparent h-full">
                             <div role="list" className="box-border caret-transparent h-full">
                                 <div
@@ -125,7 +125,7 @@ export const NewsSection = () => {
 
 
 
-                <div className="box-border caret-transparent contents">
+                <div className="box-border caret-transparent contents mr-6">
 
                     {/*                     <div className="items-start box-border caret-transparent col-end-[span_7] justify-start min-h-[auto] min-w-[auto] w-full md:col-end-[span_5]">
 
@@ -194,17 +194,17 @@ export const NewsSection = () => {
 
 
 
-                    <div className="col-span-2 md:col-span-7 flex flex-col ">
+                    <div className="col-span-2 md:col-span-5 rounded-xl flex flex-col mr-20">
                         <h2 className="font-bold font-medium text-xl mb-6  cursor-pointer tracking-wide bg-transparent border-l-stone-900 border-b-stone-900/20 transition-all duration-200 hover:opacity-70 ">
-                            Ubicación
+                            Nuestra ubicación
                         </h2>
                         {/* Área del Mapa */}
-                        <div className="h-64 md:h-full md:h-[590px] w-full bg-neutral-400">
+                        <div className="h-64 md:h-full md:h-[590px] w-90 rounded-xlbg-neutral-400 mb-6">
 
                             <iframe
                                 title="Ubicación del negocio"
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2077.0463639292893!2d-71.60778267517432!3d10.661657321984306!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8998ef7a37e3b3%3A0xd72c9490243bc414!2sDai%20Motors%2C%20S.A.!5e0!3m2!1ses!2sve!4v1776195462767!5m2!1ses!2sve"
-                                className="w-full h-full border-0"
+                                className="w-full h-full rounded-xl"
                                 allowFullScreen={false}
                                 loading="lazy"
                             ></iframe>

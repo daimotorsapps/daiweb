@@ -12,16 +12,16 @@ export const DealerCard = (props: DealerCardProps) => {
  return (
  <div
  role="none"
- className="group box-border flex h-full min-h-auto min-w-auto w-full cursor-pointer"
+ className="group box-border rounded-xl flex h-full min-h-auto min-w-auto w-full cursor-pointer"
  >
  <div className="relative box-border flex min-h-auto min-w-auto w-full">
- <div className="text-white items-stretch bg-stone-900 box-border gap-x-[20.1964px] flex flex-col h-[580px] justify-end min-h-auto min-w-auto gap-y-[20.1964px] w-full px-[20.1964px] py-[28.1964px] md:gap-x-[23.4286px] md:gap-y-[23.4286px] md:p-[46.2857px] overflow-hidden" >
+ <div className="text-white items-stretch rounded-xl bg-stone-900 box-border gap-x-[20.1964px] flex flex-col h-[580px] justify-end min-h-auto min-w-auto gap-y-[20.1964px] w-full px-[20.1964px] py-[28.1964px] md:gap-x-[23.4286px] md:gap-y-[23.4286px] md:p-[46.2857px] overflow-clip" >
  {/* Background image with zoom on hover */}
- <div className="absolute box-border h-full opacity-60 w-full z-[1] overflow-clip inset-0">
+ <div className="absolute box-border rounded-xl h-full opacity-60 w-full z-[1] overflow-clip inset-0">
  <img
  src={props.imageSrc}
  alt=""
- className="absolute box-border h-full max-w-full object-cover w-full inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
+ className="absolute box-border rounded-xl h-full max-w-full object-cover w-full inset-0 transition-transform duration-700 ease-out group-hover:scale-105 overflow-clip"
  />
  </div>
  {/* <div className="relative box-border min-h-auto min-w-auto z-[1]">

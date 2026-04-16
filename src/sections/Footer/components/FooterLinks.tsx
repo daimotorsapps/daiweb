@@ -1,6 +1,13 @@
 import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; export const FooterLinks = () => {
-    return (<div className="box-border caret-transparent gap-x-[16.7857px] flex col-end-[span_8] min-h-[auto] min-w-[auto] gap-y-[36.5893px] w-full md:gap-x-[29.7143px] md:gap-y-[46.2857px]">
-        <div
+   
+   
+   
+    return (
+
+
+        <div className="box-border caret-transparent gap-x-[16.7857px] flex col-end-[span_8] min-h-[auto] min-w-[auto] gap-y-[36.5893px] w-full md:gap-x-[29.7143px] md:gap-y-[46.2857px]">
+
+            {/*<div
             role="navigation" className="box-border caret-transparent gap-x-[16.7857px] grid flex-col auto-cols-[minmax(0px,1fr)] grid-cols-[repeat(2,minmax(0px,1fr))] grid-rows-[auto] min-h-[auto] min-w-[auto] gap-y-[36.5893px] w-full md:gap-x-[29.7143px] md:grid-cols-[repeat(4,minmax(0px,1fr))] md:gap-y-[46.2857px]" >
             <FooterColumn
                 title="MODELOS"
@@ -10,14 +17,13 @@ import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; export
                 title="CONTACTO"
                 links={[{ href: "/cotizar", label: "Cotizar" }, { href: "/financiamiento", label: "Financiación" },]}
             />
-            {/* <FooterColumn
+            <FooterColumn
                 title="ENCUÉNTRANOS"
                 links={[{ href: "https://maps.app.goo.gl/K6h3bZhmiyK1rFEM8", label: "Av. Las Delicias, Edif. Dai Motors" },]}
-            /> */}
-
-
-            {/* Columna de Ubicación con Mapa */}
-            {/* <div className="flex flex-col gap-y-[16px]">
+            /> 
+  
+             Columna de Ubicación con Mapa 
+             <div className="flex flex-col gap-y-[16px]">
                 <h2 className="font-bold text-[16px] uppercase tracking-wide">
                     Ubicación
                 </h2>
@@ -38,7 +44,7 @@ import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; export
                 <p className="text-[14px] text-gray-500 leading-tight">
                     Av. 15 Las Delicias, Maracaibo.
                 </p>
-            </div> */}
+            </div> 
 
 
 
@@ -46,7 +52,9 @@ import { FooterColumn } from "@/sections/Footer/components/FooterColumn"; export
 
 
 
+        </div>*/}
         </div>
-    </div>
+
+
     );
 };

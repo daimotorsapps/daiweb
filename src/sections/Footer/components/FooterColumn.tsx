@@ -7,6 +7,7 @@ export type FooterColumnProps = {
  links: FooterColumnLink[];
 };
 export const FooterColumn = (props: FooterColumnProps) => {
+    
  return (
  <section className="box-border min-h-auto min-w-auto">
  <h3 className="text-[16.0982px] font-medium box-border flow-root leading-[17.708px] mb-[20.1964px] md:text-[17.7143px] md:leading-[19.4857px] md:mb-[23.4286px]">

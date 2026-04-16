@@ -9,8 +9,8 @@ type Slide = {
 const slides: Slide[] = [
  {
  ariaLabel: "1 / 7",
- desktopSrc: "./public/img/Home-Creta.jpg",
- mobileSrc: "./public/img/Home-Creta-Mobile.jpg",
+ desktopSrc: "./public/img/home-creta.jpg",
+ mobileSrc: "./public/img/home-creta-mobile.jpg",
  /* ctaHref: "#modelos",
  ctaText: "MÁS INFORMACIÓN", */
  },

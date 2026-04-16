@@ -37,13 +37,13 @@ export const DesktopNavMenu = () => {
                             <div className="box-border min-h-0 min-w-0 text-nowrap md:min-h-auto md:min-w-auto">
                                 Modelos
                             </div>
-                            <div className="box-border shrink-0 min-h-0 min-w-0 text-nowrap w-4 ml-auto md:min-h-auto md:min-w-auto">
+                            {/* <div className="box-border shrink-0 min-h-0 min-w-0 text-nowrap w-4 ml-auto md:min-h-auto md:min-w-auto">
                                 <img
                                     src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-2.svg"
                                     alt="Icon"
                                     className={`box-border h-full text-nowrap transform align-baseline w-full transition-transform duration-300 md:rotate-90 ${modelsOpen ? "rotate-180" : ""}`}
                                 />
-                            </div>
+                            </div> */}
                         </button>
                     </div>
 
