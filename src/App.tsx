@@ -11,7 +11,7 @@ export const App = () => {
     <body className="text-stone-900 text-base not-italic normal-nums font-normal accent-auto bg-gray-200 box-border caret-transparent block tracking-[normal] leading-6 list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-hyundai_sans" >
       <div className="box-border caret-transparent flex flex-col min-h-[1000px] overflow-clip">
         <Navbar />
-          <InfoGrid />
+        <InfoGrid />
         <main id="main" className="box-border caret-transparent flex basis-[0%] flex-col grow min-h-[auto] min-w-[auto]">
           <section id="inicio">
             <HeroSlider />
@@ -29,7 +29,7 @@ export const App = () => {
         <section id="footer">
           <Footer />
         </section>
-        
+
       </div>
     </body>
   );

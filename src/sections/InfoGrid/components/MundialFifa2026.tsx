@@ -61,11 +61,11 @@ function Countdown() {
 
     return (
         <div className="flex flex-col items-center text-center">
-            <div className="flex gap-x-2 text-lg">
+            <div className="flex gap-x-2 text-xl font-medium">
                 <span>{timeLeft.days} <br /> días</span>
                 <span>{timeLeft.hours} <br /> horas</span>
-                <span>{timeLeft.minutes} <br /> minutos</span>
-                <span>{timeLeft.seconds} <br /> segundos</span>
+                <span>{timeLeft.minutes} <br /> min</span>
+                <span>{timeLeft.seconds} <br /> seg</span>
             </div>
         </div>
     );
