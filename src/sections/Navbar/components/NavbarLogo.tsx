@@ -6,7 +6,7 @@ export const NavbarLogo = (props: NavbarLogoProps) => {
     return (
         <a
             aria-label="Home Page"
-            href="/"
+            href="#inicio"
             className={`relative items-center box-border caret-transparent flex justify-start max-w-full -outline-offset-2 z-[2] ${props.anchorClassName}`}
         >
             <div
@@ -15,7 +15,7 @@ export const NavbarLogo = (props: NavbarLogoProps) => {
                 <img
                     src="./public/img/logo-dai.png"
                     alt="Icon"
-                    className="box-border caret-transparent h-full align-baseline w-full"
+                    className="box-border caret-transparent h-20 align-baseline w-full"
                 />
             </div>
         </a>

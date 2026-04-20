@@ -1,12 +1,12 @@
 import { DealerCard } from "./components/DealerCard";
 
 export const DealerSection = () => {
-return ( <section className="relative items-stretch bg-gray-200 box-border caret-transparent flex flex-col justify-center min-h-[auto] min-w-[auto]">
+return ( <section className="relative items-stretch bg-gray-200 box-border caret-transparent flex flex-col justify-center min-h-[auto] min-w-[auto]" >
 {/* <div className="relative box-border caret-transparent h-[66.3571px] min-h-[auto] min-w-[auto] md:h-[105.143px]"></div> */}
-<div className="relative box-border caret-transparent gap-x-[41.1786px] flex flex-col justify-center max-w-[1440px] min-h-[auto] min-w-[auto] gap-y-[41.1786px] w-[calc(100%_-_35.1429px)] z-[1] mx-auto md:gap-x-[60.5714px] md:gap-y-[60.5714px] md:w-[calc(100%_-_86.8571px)]">
+<div className="relative box-border caret-transparent gap-x-[41.1786px] flex md:flex-col justify-center max-w-[1440px] min-h-[auto] min-w-[auto] gap-y-[41.1786px] w-[calc(100%_-_35.1429px)] z-[1] mx-auto md:gap-x-[60.5714px] md:gap-y-[60.5714px] md:w-[calc(100%_-_86.8571px)]">
 <div className="box-border caret-transparent gap-x-[16.7857px] flex min-h-[auto] min-w-[auto] gap-y-[16.7857px] w-full md:gap-x-[29.7143px] md:gap-y-[29.7143px]">
 <div
-role="none" className="box-border caret-transparent gap-x-[16.7857px] flex flex-col auto-cols-[minmax(0px,1fr)] grid-cols-[repeat(4,minmax(0px,1fr))] grid-rows-[auto] min-h-[auto] min-w-[auto] gap-y-[16.7857px] w-full md:gap-x-[29.7143px] md:grid md:gap-y-[29.7143px]" >
+role="none" className="box-border caret-transparent gap-x-[10px] flex md:flex-col md:auto-cols-[minmax(0px,1fr)] grid-cols-[repeat(2,minmax(0px,1fr))] md:grid-cols-[repeat(4,minmax(0px,1fr))] grid-rows-[auto] min-h-[auto] min-w-[auto] gap-y-[16.7857px] w-full md:gap-x-[29.7143px] md:grid md:gap-y-[29.7143px]" >
 
 {/*  FRENTE */}
 <DealerCard

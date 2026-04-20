@@ -27,7 +27,7 @@ const hatchbackModels: CarModel[] = [
         potencia: "82 HP",
         torque: "114 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965436d61dbfd3b2e09b1d1_FICHAS TÉCNICAS GRAND i10 GLS.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/hatchback/GRAND-i10-GLS.pdf",
     },
     {
         modelName: "Grand i10",
@@ -40,7 +40,7 @@ const hatchbackModels: CarModel[] = [
         potencia: "82 HP",
         torque: "114 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965420d060d242c90234d4d_FICHAS TÉCNICAS GRAND i10 GL.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/hatchback/GRAND-i10-GL-AT.pdf",
     },
     {
         modelName: "Grand i10",
@@ -53,7 +53,7 @@ const hatchbackModels: CarModel[] = [
         potencia: "82 HP",
         torque: "114 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695e83883da1f5d2f346e8b7_FICHAS TÉCNICAS GRAND i10 GL AT_compressed.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/hatchback/GRAND-i10-GL-MT.pdf",
     },
 ];
 const sedanModels: CarModel[] = [
@@ -67,7 +67,7 @@ const sedanModels: CarModel[] = [
         potencia: "156 HP",
         torque: "192 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6964ff69390704cd92b6c2de_FICHAS TÉCNICAS ELANTRA_compressed.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/sedan/FICHA-TECNICA-ELANTRA.pdf",
     },
     {
         modelName: "Accent",
@@ -79,7 +79,7 @@ const sedanModels: CarModel[] = [
         potencia: "113 HP",
         torque: "144 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69614662638775eb48fa50b2_FICHAS TÉCNICAS ACCENT_compressed.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/sedan/FICHA-TECNICA-ACCENT.pdf",
     },
     {
         modelName: "Grand i10",
@@ -91,7 +91,7 @@ const sedanModels: CarModel[] = [
         potencia: "82 HP",
         torque: "114 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d76f581248231e1ed4ac5_F.T GRAND i10 SEDÁN.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/sedan/FICHA-TECNICA-GRAND-i10-SEDAN.pdf",
     },
 ];
 
@@ -106,7 +106,7 @@ const suvModels: CarModel[] = [
         potencia: "113 HP",
         torque: "144 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6996436f4dba3b7522f49d72_FT CRETA.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/suv/FICHA-TECNICA-CRETA.pdf",
     },
     {
         modelName: "Tucson",
@@ -119,7 +119,7 @@ const suvModels: CarModel[] = [
         potencia: "154 HP",
         torque: "192 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ecab9674f3fa0762a6f_FICHAS TÉCNICAS ACTUALIZADAS-9.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/suv/FICHA-TECNICA-TUCSON-PREMIUM.pdf",
     },
     {
         modelName: "Tucson",
@@ -132,7 +132,7 @@ const suvModels: CarModel[] = [
         potencia: "154 HP",
         torque: "192 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696510595cc79a834f5d416d_FICHAS TÉCNICAS TUCSON LIMITED.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/suv/FICHA-TECNICA-TUCSON-LIMITED.pdf",
     },
     {
         modelName: "Palisade",
@@ -144,7 +144,7 @@ const suvModels: CarModel[] = [
         potencia: "291 HP",
         torque: "355 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d8177a4bdd38b9b878f83_FICHAS TÉCNICAS PALISADE.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/suv/FICHA-TECNICA-PALISADE.pdf",
     },
 ];
 
@@ -159,7 +159,7 @@ const mvpModels: CarModel[] = [
         potencia: "268 HP",
         torque: "331 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69653a929d64b60954a2bc9e_FICHAS TÉCNICAS STARIA VAN.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/mvp/FICHA-TECNICA-STARIA-VAN.pdf",
     },
     {
         modelName: "Staria Wagon",
@@ -171,7 +171,7 @@ const mvpModels: CarModel[] = [
         potencia: "268 HP",
         torque: "331 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69653942e616d5d723ddbee6_FICHAS TÉCNICAS STARIA WAGON 11P.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/mvp/FICHA-TECNICA-STARIA-WAGON-11P.pdf",
     },
     {
         modelName: "Staria Wagon",
@@ -183,7 +183,7 @@ const mvpModels: CarModel[] = [
         potencia: "268 HP",
         torque: "331 Nm",
         /* cotizarHref: "#inicio", */
-        fichaTecnicaHref: "https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965305b1f1155e3f70d3894_FICHAS TÉCNICAS STARIA WAGON 7P.pdf",
+        fichaTecnicaHref: "./public/fichas-tecnicas/mvp/FICHA-TECNICA-STARIA-WAGON-7P.pdf",
     },
 ];
 

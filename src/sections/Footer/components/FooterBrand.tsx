@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'; */
 export const FooterBrand = () => {
-    const socials = [
+    /* const socials = [
         {
             ariaLabel: "Facebook",
             href: "https://www.facebook.com/profile.php?id=100090385504775",
@@ -24,29 +24,29 @@ export const FooterBrand = () => {
             icon: faPhone
         },
 
-        /*     
+             
          { ariaLabel: "Facebook", href: "https://www.facebook.com/profile.php?id=100090385504775", src: "./public/svg/facebook.svg" },
          { ariaLabel: "Instagram", href: "https://www.instagram.com/daimotorsmcbo/", src: "https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-11.svg" },
          { ariaLabel: "Telefono", href: "tel+582617000485", src: "https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-11.svg" },
          { ariaLabel: "Mail", href: "https://www.instagram.com/daimotorsmcbo/", src: "./public/svg/envelope-solid-full.svg" },
-         */
+         
 
 
-        /* { ariaLabel: "LinkedIn", href: "https://www.linkedin.com/company/hyundai-venezuela/", src: "https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-12.svg" },
+         { ariaLabel: "LinkedIn", href: "https://www.linkedin.com/company/hyundai-venezuela/", src: "https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-12.svg" },
         { ariaLabel: "YouTube", href: "https://www.youtube.com/channel/UCIAbqA6etu_dbObAhJhR3wQ", src: "https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-13.svg" },
-        { ariaLabel: "X", href: "https://twitter.com/Hyundai_Vzla", src: "https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-14.svg" }, */
-    ];
+        { ariaLabel: "X", href: "https://twitter.com/Hyundai_Vzla", src: "https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-14.svg" }, 
+    ]; */
 
 
     /* HTML */
     return (
-        <div className="box-border gap-x-[16.7857px] grid grow auto-cols-[1fr] col-start-[span_2] grid-cols-[repeat(auto-fit,minmax(min(100%,288px),1fr))] grid-rows-[auto] h-full min-h-auto min-w-auto gap-y-[41.1786px] md:gap-x-[29.7143px] md:gap-y-[60.5714px]" >
+        <div className="box-border gap-x-[16.7857px] grid grow auto-cols-[1fr] col-start-[span_1] grid-cols-[repeat(auto-fit,minmax(min(100%,288px),1fr))] grid-rows-[1] h-full min-h-auto min-w-auto gap-y-[41.1786px] md:gap-x-[29.7143px] md:gap-y-[60.5714px]" >
             <a
                 aria-label="Go to the homepage"
                 href="#inicio"
                 className="self-start box-border block max-w-full min-h-auto min-w-auto outline-offset-[3px] w-32 transition-opacity duration-200 hover:opacity-80"
             >
-                <div className="box-border max-w-full">
+                <div className="box-border max-w-50">
                     {/* <img
  src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-9.svg"
  alt="Hyundai Venezuela"

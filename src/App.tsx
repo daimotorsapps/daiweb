@@ -19,7 +19,7 @@ export const App = () => {
           <section id="modelos">
             <ModelSection />
           </section>
-          <section id="concesionarios">
+          <section id="nosotros">
             <DealerSection />
           </section>
           <section id="novedades">

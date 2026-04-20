@@ -1,5 +1,6 @@
-import { ModelCard } from "@/sections/ModelSection/components/ModelCard";
-import { CarouselNavigation } from "@/sections/ModelSection/components/CarouselNavigation";
+import { CarouselNavigation } from "./CarouselNavigation";
+import { ModelCard } from "./ModelCard";
+
 export type ModelCarouselProps = {
     variant: "full" | "sedans" | "suvs" | "vans";
     listTranslateClass?: string;
@@ -37,7 +38,7 @@ export const ModelCarousel = (props: ModelCarouselProps) => {
                                         potencia="82 HP"
                                         torque="114 Nm"
                                         /* cotizarHref="/cotizar" */
-                                        fichaTecnicaHref="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965436d61dbfd3b2e09b1d1_FICHAS TÉCNICAS GRAND i10 GLS.pdf"
+                                        fichaTecnicaHref="./public/fichas-tecnicas/GRAND-i10-GLS.pdf"
                                     />
                                     <ModelCard
                                         rootClass=""
@@ -53,7 +54,7 @@ export const ModelCarousel = (props: ModelCarouselProps) => {
                                         potencia="82 HP"
                                         torque="114 Nm"
                                         /* cotizarHref="/cotizar" */
-                                        fichaTecnicaHref="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965420d060d242c90234d4d_FICHAS TÉCNICAS GRAND i10 GL.pdf"
+                                        fichaTecnicaHref="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965420d060d242c90234d4d_FICHASTÉCNICASGRANDi10GL.pdf"
                                         showExtraDiv={false}
                                     />
 
@@ -86,7 +87,7 @@ export const ModelCarousel = (props: ModelCarouselProps) => {
                                         potencia="82 HP"
                                         torque="114 Nm"
                                         /* cotizarHref="/cotizar" */
-                                        fichaTecnicaHref="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965436d61dbfd3b2e09b1d1_FICHAS TÉCNICAS GRAND i10 GLS.pdf"
+                                        fichaTecnicaHref="./public/fichas-tecnicas/GRAND-i10-GLS.pdf"
                                     />
                                     <ModelCard
                                         rootClass=""
@@ -131,7 +132,7 @@ export const ModelCarousel = (props: ModelCarouselProps) => {
                                         potencia="82 HP"
                                         torque="114 Nm"
                                         /* cotizarHref="/cotizar" */
-                                        fichaTecnicaHref="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965436d61dbfd3b2e09b1d1_FICHAS TÉCNICAS GRAND i10 GLS.pdf"
+                                        fichaTecnicaHref="./public/fichas-tecnicas/GRAND-i10-GLS.pdf"
                                     />
                                     <ModelCard
                                         rootClass=""
@@ -181,7 +182,7 @@ export const ModelCarousel = (props: ModelCarouselProps) => {
                                         potencia="82 HP"
                                         torque="114 Nm"
                                         /* cotizarHref="/cotizar" */
-                                        fichaTecnicaHref="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965436d61dbfd3b2e09b1d1_FICHAS TÉCNICAS GRAND i10 GLS.pdf"
+                                        fichaTecnicaHref="./public/fichas-tecnicas/GRAND-i10-GLS.pdf"
                                     />
                                     <ModelCard
                                         rootClass=""
@@ -231,7 +232,7 @@ export const ModelCarousel = (props: ModelCarouselProps) => {
                                         potencia="82 HP"
                                         torque="114 Nm"
                                         /* cotizarHref="/cotizar" */
-                                        fichaTecnicaHref="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/6965436d61dbfd3b2e09b1d1_FICHAS TÉCNICAS GRAND i10 GLS.pdf"
+                                        fichaTecnicaHref="./public/fichas-tecnicas/GRAND-i10-GLS.pdf"
                                         showExtraDiv={false}
                                     />
                                     <ModelCard

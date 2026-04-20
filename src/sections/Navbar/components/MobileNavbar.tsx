@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { NavbarLogo } from "@/sections/Navbar/components/NavbarLogo";
-import { MobileMenuToggle } from "@/sections/Navbar/components/MobileMenuToggle";
+import { NavbarLogo } from "./NavbarLogo";
 const navLinks = [
     { href: "#modelos", label: "Modelos" },
     { href: "#modelos", label: "Comparar" },
@@ -24,9 +23,9 @@ export const MobileNavbar = () => {
                         anchorClassName="min-h-auto min-w-auto w-40"
                         divClassName="min-h-auto min-w-auto"
                     />
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                         <MobileMenuToggle isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {/* Slide-down overlay */}

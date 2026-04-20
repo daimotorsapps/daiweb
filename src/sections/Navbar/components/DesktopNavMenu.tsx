@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; */
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
@@ -15,8 +15,8 @@ export const DesktopNavMenu = () => {
     const navLinks = [
         /* { href: "#modelos", label: "Comparar" },
         { href: "#inicio", label: "Financiamiento" }, */
-        { href: "#novedades", label: "Novedades" },
-        { href: "#footer", label: "Nosotros" },        
+        { href: "#nosotros", label: "Nosotros" },
+        { href: "#novedades", label: "Contáctanos" },        
     ];
     return (
         <nav
