@@ -57,7 +57,7 @@ export const FooterBrand = () => {
                 </div>
             </a>
 
-            <div className="box-border min-h-auto min-w-auto mt-auto">
+            {/* <div className="box-border min-h-auto min-w-auto mt-auto">
                 <h3 className="text-[16.0982px] font-medium box-border flow-root leading-[17.708px] mb-[20.1964px] md:text-[17.7143px] md:leading-[19.4857px] md:mb-[23.4286px]">
                     Síguenos
                 </h3>
@@ -81,9 +81,12 @@ export const FooterBrand = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div> */}
 
-            
+
         </div>
+
+
+
     );
 };
