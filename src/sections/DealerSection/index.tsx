@@ -2,7 +2,7 @@ import { DealerCard } from "./components/DealerCard";
 
 export const DealerSection = () => {
 return ( <section className="relative items-stretch bg-gray-200 box-border caret-transparent flex flex-col justify-center min-h-[auto] min-w-[auto]">
-<div className="relative box-border caret-transparent h-[66.3571px] min-h-[auto] min-w-[auto] md:h-[105.143px]"></div>
+{/* <div className="relative box-border caret-transparent h-[66.3571px] min-h-[auto] min-w-[auto] md:h-[105.143px]"></div> */}
 <div className="relative box-border caret-transparent gap-x-[41.1786px] flex flex-col justify-center max-w-[1440px] min-h-[auto] min-w-[auto] gap-y-[41.1786px] w-[calc(100%_-_35.1429px)] z-[1] mx-auto md:gap-x-[60.5714px] md:gap-y-[60.5714px] md:w-[calc(100%_-_86.8571px)]">
 <div className="box-border caret-transparent gap-x-[16.7857px] flex min-h-[auto] min-w-[auto] gap-y-[16.7857px] w-full md:gap-x-[29.7143px] md:gap-y-[29.7143px]">
 <div
@@ -45,7 +45,7 @@ innerButtonClassName="absolute bg-transparent caret-transparent block h-full out
 </div>
 </div>
 </div>
-<div className="relative box-border caret-transparent h-[66.3571px] min-h-[auto] min-w-[auto] md:h-[105.143px]"></div>
+ <div className="relative box-border caret-transparent h-[66.3571px] min-h-[auto] min-w-[auto] md:h-[105.143px]"></div> 
 <div className="absolute box-border caret-transparent h-full pointer-events-none w-full inset-[0%]"></div>
 </section>
 );};
