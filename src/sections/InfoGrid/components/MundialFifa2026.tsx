@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 
 export default function MundialFifa2026(): JSX.Element {
     return (
-        <div className="m-x">
+
+
+        <div className=" mx-40 relative box-border caret-transparent hidden z-[1] md:block flex w-full items-center justify-between">
+
             <div className="flex w-full items-center justify-between gap-x-8">
                 <div className="flex gap-x-4">
                     <img
@@ -27,7 +30,9 @@ export default function MundialFifa2026(): JSX.Element {
                     Patrocinador <br /> oficial
                 </div>
             </div>
+
         </div>
+
     )
 }
 

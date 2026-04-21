@@ -18,7 +18,7 @@ export const MobileNavbar = () => {
         >
             {/* Top bar */}
             <div className="box-border max-w-[1440px] w-[calc(100%_-_35.1429px)] mx-auto">
-                <div className="relative box-border gap-x-[14.0982px] flex h-20 justify-between pointer-events-auto w-full z-[2] mx-auto px-[28.1964px]">
+                <div className="relative box-border gap-x-[14.0982px] flex h-20 justify-center pointer-events-auto w-full z-[2] mx-auto px-[28.1964px]">
                     <NavbarLogo
                         anchorClassName="min-h-auto min-w-auto w-40"
                         divClassName="min-h-auto min-w-auto"
@@ -29,12 +29,12 @@ export const MobileNavbar = () => {
                 </div>
             </div>
             {/* Slide-down overlay */}
-            <div
+            {/* <div
                 className={`fixed inset-x-0 top-[80px] bg-stone-900 z-50 overflow-y-auto transition-all duration-300 ease-in-out ${isOpen ? "max-h-screen opacity-100 pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none"}`}
                 style={{ maxHeight: isOpen ? "calc(100vh - 80px)" : "0" }}
             >
                 <nav aria-label="Mobile menu" className="max-w-[1440px] w-[calc(100%_-_35.1429px)] mx-auto px-[28.1964px] pt-4 pb-8">
-                    {/* Search form */}
+                    
                     <form
                         className="flex mb-6 border-b border-white/20 pb-1"
                         onSubmit={(e) => e.preventDefault()}
@@ -55,7 +55,7 @@ export const MobileNavbar = () => {
                             />
                         </label>
                     </form>
-                    {/* Nav links */}
+                    
                     <ul role="list" className="list-none pl-0 mb-6">
                         {navLinks.map((link, i) => (
                             <li
@@ -73,7 +73,7 @@ export const MobileNavbar = () => {
                             </li>
                         ))}
                     </ul>
-                    {/* CTA */}
+                    
                     <a
                         href="#inicio"
                         onClick={handleClose}
@@ -82,7 +82,7 @@ export const MobileNavbar = () => {
                         Cotizar
                     </a>
                 </nav>
-            </div>
+            </div> */}
         </div>
     );
 };
