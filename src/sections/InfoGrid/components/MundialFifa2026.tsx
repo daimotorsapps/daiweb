@@ -3,27 +3,29 @@ import { useEffect, useState } from "react";
 
 export default function MundialFifa2026(): JSX.Element {
     return (
-        <div className="flex w-full items-center justify-between">
-            <div className="flex gap-x-4">
-                <img
-                    src={'./public/img/logofifa.png'}
-                    alt="Logo FIFA 2026"
-                    className="box-border w-10 h-auto object-contain mx-auto"
-                />
-                <div className="flex flex-col">
-                    <span className="text-3xl font-semibold">
-                        Copa Mundial de la FIFA 2026™
-                    </span>
-                    <span>
-                        11 de junio - 19 de julio de 2026
-                    </span>
+        <div className="m-x">
+            <div className="flex w-full items-center justify-between gap-x-8">
+                <div className="flex gap-x-4">
+                    <img
+                        src={'./public/img/logofifa.png'}
+                        alt="Logo FIFA 2026"
+                        className="box-border w-10 h-auto object-contain mx-auto"
+                    />
+                    <div className="flex flex-col">
+                        <span className="text-3xl font-semibold">
+                            Copa Mundial de la FIFA 2026™
+                        </span>
+                        <span>
+                            11 de junio - 19 de julio de 2026
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <Countdown />
-            </div>
-            <div className="text-xl font-semibold">
-                Patrocinador <br /> oficial
+                <div>
+                    <Countdown />
+                </div>
+                <div className="text-xl font-semibold">
+                    Patrocinador <br /> oficial
+                </div>
             </div>
         </div>
     )
