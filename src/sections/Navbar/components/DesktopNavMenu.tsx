@@ -7,8 +7,17 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { useModelos } from "../../../hooks/useModelos";
 
 library.add(fas, far, fab);
+
+
+const INIT_MODELOS = [
+    { href: "#modelos", label: "Hatchback", key: "hatchback" },
+    { href: "#modelos", label: "Sedán", key: "sedan" },
+    { href: "#modelos", label: "SUV", key: "suv" },
+    { href: "#modelos", label: "MVP", key: "mvp" },
+]
 
 export const DesktopNavMenu = () => {
     const [modelsOpen, setModelsOpen] = useState(false);
@@ -16,8 +25,11 @@ export const DesktopNavMenu = () => {
         /* { href: "#modelos", label: "Comparar" },
         { href: "#inicio", label: "Financiamiento" }, */
         { href: "#nosotros", label: "Nosotros" },
-        { href: "#novedades", label: "Contáctanos" },        
+        { href: "#novedades", label: "Contáctanos" },
     ];
+
+
+
     return (
         <nav
             aria-label="Main"
@@ -48,9 +60,8 @@ export const DesktopNavMenu = () => {
                     </div>
 
                     {modelsOpen && (<div className="absolute top-full left-0 bg-stone-900 p-4 min-w-[160px] z-50 border-t border-white/10 animate-fade-in shadow-xl">
-                        {[{ href: "#modelos", label: "Hatchback" }, { href: "#modelos", label: "Sedán" }, { href: "#modelos", label: "SUV" }, { href: "#modelos", label: "MVP" },].map((item) => (<a key={item.label} href={item.href} onClick={() => setModelsOpen(false)}
-                            className="block py-2 px-3 text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors duration-200 rounded" >
-                            {item.label} </a>
+                        {INIT_MODELOS.map((item) => (
+                            <ModelosDropdown key={item.label} setModelsOpen={setModelsOpen} item={item} />
                         ))} </div>
                     )}</li>
                 {navLinks.map((link) => (<li key={link.label} className="box-border flex min-h-0 min-w-0 md:min-h-auto md:min-w-auto">
@@ -85,4 +96,23 @@ export const DesktopNavMenu = () => {
             </ul>
         </nav >
     );
+}
+
+function ModelosDropdown({ setModelsOpen, item }: { setModelsOpen: (open: boolean) => void; item: { label: string; href: string; key: string } }): JSX.Element {
+    const { setModel } = useModelos(s => s)
+    const handleClickModelos = () => {
+        setModel(item.key)
+        setModelsOpen(false)
+    }
+
+    return (
+        <a
+            key={item.label}
+            className="block py-2 px-3 text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors duration-200 rounded"
+            href={item.href}
+            onClick={handleClickModelos}
+        >
+            {item.label}
+        </a>
+    )
 }

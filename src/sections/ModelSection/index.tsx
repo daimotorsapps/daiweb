@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModelCard } from "./components/ModelCard";
+import { useModelos } from "../../hooks/useModelos";
 
 type Tab = "hatchback" | "sedan" | "suv" | "mvp";
 type CarModel = {
@@ -197,14 +198,31 @@ const tabsConfig: { key: Tab; label: string; models: CarModel[] }[] = [
 export const ModelSection = () => {
     const [activeTab, setActiveTab] = useState<Tab>("hatchback");
     const [carouselIdx, setCarouselIdx] = useState(0);
+    const { model, setModel } = useModelos(s => s)
+
     const currentModels = tabsConfig.find((t) => t.key === activeTab)?.models ?? [];
+    const visibleModel = currentModels[carouselIdx];
+
     const handleTabChange = (key: Tab) => {
         setActiveTab(key);
         setCarouselIdx(0);
-    };
+        setModel(key)
+    }
+
     const prev = () => setCarouselIdx((i) => Math.max(0, i - 1));
     const next = () => setCarouselIdx((i) => Math.min(currentModels.length - 1, i + 1));
-    const visibleModel = currentModels[carouselIdx];
+
+
+    useEffect(() => {
+        if (!model) return
+        const tabExists = tabsConfig.some(t => t.key === model)
+        if (tabExists) {
+            setActiveTab(model as Tab)
+            setCarouselIdx(0)
+        }
+    }, [model])
+
+
     return (
         <section className="relative items-stretch bg-gray-200 flex flex-col justify-center min-h-auto min-w-auto">
             <div className="relative h-[66.3571px] min-h-auto min-w-auto md:h-[105.143px]" />
