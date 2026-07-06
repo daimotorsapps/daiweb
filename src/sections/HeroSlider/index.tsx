@@ -1,160 +1,151 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-type Slide = {
-    ariaLabel: string;
-    desktopSrc: string;
-    mobileSrc: string;
-    ctaHref?: string;
-    ctaText?: string;
-};
-const slides: Slide[] = [
-    {
-        ariaLabel: "1 / 7",
-        desktopSrc: "./public/img/banner-mundial.jpg",
-        mobileSrc: "./public/img/banner-mundial-mobile.png",
-    },
-    {
-        ariaLabel: "2 / 7",
-        desktopSrc: "./public/img/home-creta.jpg",
-        mobileSrc: "./public/img/home-creta-mobile.jpg",
-        /* ctaHref: "#modelos",
-        ctaText: "MÁS INFORMACIÓN", */
-    },
-    {
-        ariaLabel: "3 / 7",
-        desktopSrc: "./public/img/banner-moviendo-historias.webp",
-        mobileSrc: "./public/img/banner-moviendo-historias-mobile.webp",
-    },
-    {
-        ariaLabel: "4 / 7",
-        desktopSrc: "./public/img/grand-i10-gl.jpg",
-        mobileSrc: "./public/img/grand-i10-gl-mobile.jpg",
-        /* ctaHref: "#inicio",
-        ctaText: "Cotizar", */
-    },
-    {
-        ariaLabel: "5 / 7",
-        desktopSrc: "./public/img/grand-i10-sedan.jpg",
-        mobileSrc: "./public/img/grand-i10-sedan-mobile.jpg",
-        /* ctaHref: "#inicio",
-        ctaText: "Cotizar", */
-    },
-    {
-        ariaLabel: "6 / 7",
-        desktopSrc: "./public/img/tucson-premium.jpg",
-        mobileSrc: "./public/img/tucson-premium-mobile.jpg",
-        /* ctaHref: "#inicio",
-        ctaText: "Cotizar", */
-    },
-    {
-        ariaLabel: "7 / 7",
-        desktopSrc: "./public/img/grand-i10-gl-mt.jpg",
-        mobileSrc: "./public/img/grand-i10-gl-mt-mobile.jpg",
-        /*  ctaHref: "#inicio",
-         ctaText: "Cotizar", */
-    },
-];
+import { slides } from "../../data/slides";
 
 export const HeroSlider = () => {
     const [current, setCurrent] = useState(0);
-    const [animating, setAnimating] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const trackRef = useRef<HTMLDivElement>(null);
+
+    // Create slides with clones for infinite loop
+    const clonedSlides = [
+        { ...slides[slides.length - 1], isClone: true, cloneId: 'prev' },
+        ...slides.map((s, i) => ({ ...s, isClone: false, index: i })),
+        { ...slides[0], isClone: true, cloneId: 'next' }
+    ];
+
     const goTo = useCallback((idx: number) => {
-        if (animating) return;
-        setAnimating(true);
-        setCurrent((idx + slides.length) % slides.length);
-        setTimeout(() => setAnimating(false), 600);
-    }, [animating]);
-    const next = () => goTo(current + 1);
-    const prev = () => goTo(current - 1);
-    // Auto-advance
+        if (isTransitioning) return;
+        setIsTransitioning(true);
+        setCurrent(idx);
+    }, [isTransitioning]);
+
+    const next = useCallback(() => {
+        if (isTransitioning) return;
+        setIsTransitioning(true);
+        setCurrent((prev) => prev + 1);
+    }, [isTransitioning]);
+
+    const prev = useCallback(() => {
+        if (isTransitioning) return;
+        setIsTransitioning(true);
+        setCurrent((prev) => prev - 1);
+    }, [isTransitioning]);
+
+    // Handle transition end for infinite loop
     useEffect(() => {
-        const timer = setInterval(next, 5000);
-        return () => clearInterval(timer);
+        const track = trackRef.current;
+        if (!track) return;
+
+        const handleTransitionEnd = () => {
+            if (current === slides.length) {
+                // At cloneFirst (index slides.length), jump to real slide 0
+                track.style.transition = 'none';
+                track.style.transform = `translateX(-100%)`;
+                track.offsetHeight; // force reflow
+                track.style.transition = '';
+                setCurrent(0);
+                setIsTransitioning(false);
+            } else if (current === -1) {
+                // At cloneLast (index -1), jump to real last slide
+                track.style.transition = 'none';
+                track.style.transform = `translateX(-${slides.length * 100}%)`;
+                track.offsetHeight;
+                track.style.transition = '';
+                setCurrent(slides.length - 1);
+                setIsTransitioning(false);
+            } else {
+                setIsTransitioning(false);
+            }
+        };
+
+        track.addEventListener('transitionend', handleTransitionEnd);
+        return () => track.removeEventListener('transitionend', handleTransitionEnd);
     }, [current]);
-    const slide = slides[current];
+
+    // Autoplay
+    useEffect(() => {
+        timerRef.current = setInterval(() => {
+            if (!isTransitioning) next();
+        }, 5000);
+        return () => {
+            if (timerRef.current) clearInterval(timerRef.current);
+        };
+    }, [next, isTransitioning]);
+
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "ArrowLeft") prev();
+            if (e.key === "ArrowRight") next();
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [next, prev]);
+
     return (
-        <div className="relative w-full overflow-hidden" style={{ minHeight: "750px" }}>
-            {/* Slide */}
+        <div className="relative w-full overflow-hidden h-[calc(56.25vw-200px)]">
             <section
-                key={current}
                 role="group"
-                aria-label={slide.ariaLabel}
-                className="relative text-white items-stretch bg-stone-900 flex flex-col shrink-0 justify-end w-full"
-                style={{ minHeight: "750px" }}
+                aria-label="Hero slider"
+                className="relative text-white bg-stone-900 w-full h-full"
             >
-                {/* Background images */}
-                <div className="absolute inset-0 overflow-hidden">
-                    {/* Desktop */}
-                    <img
-                        src={slide.desktopSrc}
-                        alt=""
-                        className="absolute inset-0 h-full w-full object-fill hidden md:block"
-                        style={{ animation: "hero-reveal 0.9s ease-out forwards" }}
-                    />
-                    {/* Mobile */}
-                    <img
-                        src={slide.mobileSrc}
-                        alt=""
-                        className="absolute inset-0 h-full w-full object-contain md:hidden"
-                        style={{ animation: "hero-reveal 0.9s ease-out forwards" }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
-                </div>
-                {/* CTA */}
-                {slide.ctaHref && slide.ctaText && (
-                    <div
-                        className="relative items-center flex flex-col justify-center max-w-[1440px] w-[calc(100%_-_35.1429px)] z-[1] mx-auto pb-24 md:w-[calc(100%_-_86.8571px)] md:pb-40"
-                        style={{ animation: "fade-in 0.7s ease-out 0.3s forwards", opacity: 0 }}
-                    >
-                        <div className="items-center flex justify-center w-full">
-                            <a
-                                href={slide.ctaHref}
-                                className="relative text-stone-900 items-center bg-white flex h-full justify-center gap-x-2 gap-y-2 align-middle border px-6 py-[14.4px] border-solid border-white transition-all duration-200 hover:bg-stone-100 active:scale-95"
-                            >
-                                {slide.ctaText}
-                            </a>
+                <div 
+                    ref={trackRef}
+                    className="flex h-full transition-transform duration-500 ease-out"
+                    style={{ transform: `translateX(-${(current + 1) * 100}%)` }}
+                >
+                    {clonedSlides.map((slide, index) => (
+                        <div key={`${slide.cloneId || slide.index}-${index}`} className="relative h-full w-full flex-shrink-0 min-w-[100%]">
+                            <img
+                                src={slide.desktopSrc}
+                                alt={slide.alt}
+                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto hidden md:block"
+                                style={{ animation: (!slide.isClone && index - 1 === current) ? "hero-reveal 0.9s ease-out forwards" : "none" }}
+                            />
+                            <img
+                                src={slide.mobileSrc}
+                                alt={slide.alt}
+                                loading="lazy"
+                                className="absolute inset-0 h-full w-full object-contain md:hidden"
+                                style={{ animation: (!slide.isClone && index - 1 === current) ? "hero-reveal 0.9s ease-out forwards" : "none" }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
                         </div>
-                    </div>
-                )}
-                {/* Spacer */}
-                <div className="relative h-[66px] min-h-auto min-w-auto md:h-[105px]" />
+                    ))}
+                </div>
             </section>
-            {/* Prev/next buttons */}
-            <div className="absolute inset-x-0 flex justify-between items-center px-4 md:px-8 pointer-events-none z-[99]" style={{ top: "50%", transform: "translateY(-50%)" }}>
+
+            <div className="absolute inset-0 flex justify-between pointer-events-none z-50">
                 <button
                     onClick={prev}
                     aria-label="Diapositiva anterior"
-                    className="pointer-events-auto relative text-stone-900 items-center aspect-square bg-white/80 flex justify-center align-middle w-12 border rounded-full border-solid border-stone-900/20 transition-all duration-200 hover:bg-white hover:scale-105 active:scale-95 shadow-md"
+                    className="pointer-events-auto w-20 md:w-28 h-full bg-transparent hover:bg-white/5 hover:backdrop-blur-[2px] transition-all duration-500 flex items-center justify-center"
                 >
-                        <FontAwesomeIcon icon={faArrowLeft} className="h-full w-[36%]" />
-                        
+                    <FontAwesomeIcon icon={faArrowLeft} className="text-white text-xl md:text-2xl drop-shadow-lg" />
                 </button>
                 <button
                     onClick={next}
                     aria-label="Diapositiva siguiente"
-                    className="pointer-events-auto relative text-stone-900 items-center aspect-square bg-white/80 flex justify-center align-middle w-12 border rounded-full border-solid border-stone-900/20 transition-all duration-200 hover:bg-white hover:scale-105 active:scale-95 shadow-md"
+                    className="pointer-events-auto w-20 md:w-28 h-full bg-transparent hover:bg-white/5 hover:backdrop-blur-[2px] transition-all duration-500 flex items-center justify-center"
                 >
-                    <FontAwesomeIcon icon={faArrowRight} className="h-full w-[36%]" />
+                    <FontAwesomeIcon icon={faArrowRight} className="text-white text-xl md:text-2xl drop-shadow-lg" />
                 </button>
             </div>
 
-            {/* Dot indicators */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-[99]">
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-50">
                 {slides.map((_, i) => (
                     <button
                         key={i}
                         onClick={() => goTo(i)}
                         aria-label={`Ir a diapositiva ${i + 1}`}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
+                        aria-current={i === (current % slides.length + slides.length) % slides.length ? "true" : undefined}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${i === (current % slides.length + slides.length) % slides.length ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
                     />
                 ))}
             </div>
         </div>
     );
 };
-
-
-
-
-

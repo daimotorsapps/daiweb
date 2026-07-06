@@ -28,7 +28,7 @@ export const Footer = () => {
  className="fixed items-center bg-green-500 box-border flex h-16 justify-center max-w-full outline-offset-[3px] w-16 z-[999] p-4 rounded-full right-8 bottom-8 shadow-lg transition-all duration-200 hover:bg-green-400 hover:scale-110 active:scale-95"
  >
  <img
- src="./public/img/wslogo.svg"
+ src="/img/wslogo.svg"
  alt=""
  className="box-border caret-transparent max-w-full min-h-[auto] min-w-[auto] object-cover w-full"
  />

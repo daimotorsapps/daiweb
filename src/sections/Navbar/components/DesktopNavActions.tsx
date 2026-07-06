@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const DesktopNavActions = () => {
  return (
  <ul
@@ -11,11 +13,6 @@ className="box-border caret-transparent flex shrink-0 justify-start list-none mi
 className="relative items-center box-border caret-transparent gap-x-[10.0982px] flex basis-[0%] grow h-full justify-start -outline-offset-2 text-nowrap align-top w-full z-[2] mx-auto px-[14.0982px] md:gap-x-[11.7143px] md:px-[15.7143px]"
  >
  <div className="box-border caret-transparent min-h-0 min-w-0 text-nowrap w-[17.6px] md:min-h-[auto] md:min-w-[auto]">
- {/* <img
- src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-3.svg"
-alt="Icon"
-className="box-border caret-transparent h-full text-nowrap align-baseline w-full"
- /> */}
  </div>
  </div>
  </div>
@@ -23,10 +20,10 @@ className="box-border caret-transparent h-full text-nowrap align-baseline w-full
 <li className="relative items-start box-border caret-transparent flex flex-col justify-center min-h-0 min-w-0 text-center z-[2] md:min-h-[auto] md:min-w-[auto]">
  <div className="relative box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
  <div className="absolute box-border caret-transparent h-full w-full z-[3] inset-[0%]">
- <a
- href="/cotizar"
+ <Link
+ to="/cotizar"
 className="absolute box-border caret-transparent block h-full max-w-full outline-offset-[3px] w-full inset-[0%]"
- ></a>
+ ></Link>
 <button
  type="button"
 className="absolute bg-transparent caret-transparent hidden h-full outline-offset-[3px] w-full p-0 inset-[0%]"

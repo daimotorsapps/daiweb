@@ -59,6 +59,10 @@ module.exports = {
  "hyundai_sans": ["Hyundai sans", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
  "corinthia": ["Corinthia", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"]
  },
+ spacing: {
+     mcard: "20.1964px",
+     "mcard-md": "23.4286px",
+ },
  keyframes: {
  "accordion-down": {
  from: { height: "0" },

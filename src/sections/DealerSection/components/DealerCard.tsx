@@ -1,51 +1,59 @@
-export type DealerCardProps = {
- imageSrc: string;
- eyebrowText: string;
- title: string;
- description?: string;
- buttonText?: string;
- linkHref?: string;
- innerLinkClassName?: string;
- innerButtonClassName?: string;
-};
-export const DealerCard = (props: DealerCardProps) => {
- return (
- <div
- role="none"
- className="group box-border rounded-xl flex md:h-full min-h-auto min-w-auto w-full cursor-pointer"
- >
- <div className="relative box-border flex min-h-auto min-w-auto w-full">
- <div className="text-white items-stretch rounded-xl bg-stone-900 box-border gap-x-[20.1964px] flex flex-col h-60 md:h-[580px] justify-end min-h-auto min-w-auto gap-y-[20.1964px] w-full px-[20.1964px] py-[28.1964px] md:gap-x-[23.4286px] md:gap-y-[23.4286px] md:p-[46.2857px] overflow-clip" >
- {/* Background image with zoom on hover */}
- <div className="absolute box-border rounded-xl h-full opacity-60 w-full z-[1] overflow-clip inset-0">
- <img
- src={props.imageSrc}
- alt=""
- className="absolute box-border rounded-xl h-full max-w-full object-cover w-full inset-0 transition-transform duration-700 ease-out group-hover:scale-105 overflow-clip"
- />
- </div>
- {/* <div className="relative box-border min-h-auto min-w-auto z-[1]">
- <h3 className="text-[28.1964px] font-medium box-border flow-root leading-[31.0161px] mb-[20.1964px] md:text-[31.4286px] md:leading-[34.5714px] md:mb-[23.4286px]">
- {props.title}
- </h3>
- <div className="box-border">
- <p className="box-border flow-root">
- {props.description}
- </p>
- </div>
- <div className="relative box-border inline-block mt-[20.1964px] md:mt-[23.4286px]">
- <a
- href={props.linkHref}
- className="relative text-stone-900 items-center bg-white box-border gap-x-2 flex h-full justify-center gap-y-2 text-center align-middle border px-6 py-[14.4px] border-solid border-white/20 transition-all duration-200 hover:bg-stone-100 md:text-white md:bg-transparent md:border-white/50 md:hover:bg-white/10 active:scale-95"
- >
- <div className="relative text-stone-900 box-border flow-root min-h-auto min-w-auto md:text-white">
- {props.buttonText}
- </div>
- </a>
- </div>
- </div> */}
- </div>
- </div>
- </div>
- );
+import { type DealerCardData } from '../dealersData';
+
+interface DealerCardProps {
+  data: DealerCardData;
+  index: number;
+}
+
+export const DealerCard = ({ data, index }: DealerCardProps) => {
+  const isHero = data.variant === 'hero';
+
+  const placementClasses = (() => {
+    if (isHero) return 'md:col-start-1 md:row-start-1 md:col-span-2 md:row-span-2';
+    const key = `${data.colStart}-${data.rowStart}`;
+    const map: Record<string, string> = {
+      '3-1': 'md:col-start-3 md:row-start-1 md:col-span-1 md:row-span-1',
+      '4-1': 'md:col-start-4 md:row-start-1 md:col-span-1 md:row-span-1',
+      '3-2': 'md:col-start-3 md:row-start-2 md:col-span-1 md:row-span-1',
+      '4-2': 'md:col-start-4 md:row-start-2 md:col-span-1 md:row-span-1',
+    };
+    return map[key] ?? '';
+  })();
+
+  return (
+    <article
+      className={`
+        relative group rounded-xl overflow-hidden opacity-0 animate-fade-in-up
+        ${isHero ? '' : 'aspect-[3/4]'}
+        ${isHero ? 'min-h-[500px] md:min-h-[700px]' : 'min-h-[350px] md:min-h-[400px]'}
+        ${placementClasses}
+      `}
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <img
+        src={data.image}
+        alt={data.label}
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+      />
+
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-stone-900/20 to-transparent
+          transition-opacity duration-300 group-hover:from-stone-900/80 group-hover:via-stone-900/40"
+        aria-hidden="true"
+      />
+
+      <div className="relative h-full flex flex-col justify-end p-6 md:p-8">
+        <span className="text-xs md:text-sm font-medium tracking-wider uppercase text-white/70 mb-1">
+          {data.label}
+        </span>
+
+        {isHero && (
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            {data.label}
+          </h2>
+        )}
+      </div>
+    </article>
+  );
 };

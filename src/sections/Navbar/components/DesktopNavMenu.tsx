@@ -1,118 +1,162 @@
-import { useState } from "react";
-
-/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; */
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-/* import all the icons in Free Solid, Free Regular, and Brands styles */
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+import { useState, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { useModelos } from "../../../hooks/useModelos";
-
-library.add(fas, far, fab);
-
-
-const INIT_MODELOS = [
-    { href: "#modelos", label: "Hatchback", key: "hatchback" },
-    { href: "#modelos", label: "Sedán", key: "sedan" },
-    { href: "#modelos", label: "SUV", key: "suv" },
-    { href: "#modelos", label: "MVP", key: "mvp" },
-]
+import { desktopNavLinks, modelosDropdown, ModelItem } from "../../../data/navLinks";
 
 export const DesktopNavMenu = () => {
     const [modelsOpen, setModelsOpen] = useState(false);
-    const navLinks = [
-        /* { href: "#modelos", label: "Comparar" },
-        { href: "#inicio", label: "Financiamiento" }, */
-        { href: "#nosotros", label: "Nosotros" },
-        { href: "#novedades", label: "Contáctanos" },
-    ];
+    const [activeTab, setActiveTab] = useState(0);
+    const dropdownRef = useRef<HTMLLIElement>(null);
+    const openTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
+    const closeTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
+    const clearTimers = useCallback(() => {
+        clearTimeout(openTimeoutRef.current);
+        clearTimeout(closeTimeoutRef.current);
+    }, []);
 
+    const handleMouseEnter = useCallback(() => {
+        clearTimers();
+        openTimeoutRef.current = setTimeout(() => setModelsOpen(true), 150);
+    }, [clearTimers]);
+
+    const handleMouseLeave = useCallback(() => {
+        clearTimers();
+        closeTimeoutRef.current = setTimeout(() => setModelsOpen(false), 250);
+    }, [clearTimers]);
 
     return (
         <nav
             aria-label="Main"
-            className="box-border gap-x-[14.0982px] flex basis-0 grow min-h-0 min-w-0 md:gap-x-[15.7143px] md:min-h-auto md:min-w-auto"
+            className="flex basis-0 grow min-h-0 min-w-0 gap-x-[15.7143px]"
         >
             <ul
                 role="list"
-                className="items-stretch box-border flex basis-0 grow justify-center list-none min-h-0 min-w-0 pl-0 md:min-h-auto md:min-w-auto"
+                className="items-stretch flex basis-0 grow justify-center list-none min-h-0 min-w-0 pl-0"
             >
-                {/* Modelos dropdown */}
-                <li className="box-border flex min-h-0 min-w-0 md:min-h-auto md:min-w-auto relative">
-                    <div className="box-border h-full min-h-0 min-w-0 text-left w-full md:min-h-auto md:min-w-auto">
+                <li
+                    ref={dropdownRef}
+                    className="flex min-h-0 min-w-0 relative"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <div className="h-full min-h-0 min-w-0 text-left w-full">
                         <button
                             onClick={() => setModelsOpen(!modelsOpen)}
-                            className="relative items-center box-border gap-x-[10.0982px] flex basis-0 grow h-full justify-start -outline-offset-2 text-nowrap align-top w-full z-[2] mx-auto px-[14.0982px] md:gap-x-[11.7143px] md:px-[15.7143px] transition-opacity duration-200 hover:opacity-70"
+                            aria-haspopup="true"
+                            aria-expanded={modelsOpen}
+                            className="relative items-center flex gap-x-[11.7143px] basis-0 grow h-full justify-start -outline-offset-2 text-nowrap align-top w-full z-[2] mx-auto px-[15.7143px] transition-opacity duration-200 hover:opacity-70"
                         >
-                            <div className="box-border min-h-0 min-w-0 text-nowrap md:min-h-auto md:min-w-auto">
+                            <div className="min-h-0 min-w-0 text-nowrap text-[16px] font-medium">
                                 Modelos
                             </div>
-                            {/* <div className="box-border shrink-0 min-h-0 min-w-0 text-nowrap w-4 ml-auto md:min-h-auto md:min-w-auto">
-                                <img
-                                    src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-2.svg"
-                                    alt="Icon"
-                                    className={`box-border h-full text-nowrap transform align-baseline w-full transition-transform duration-300 md:rotate-90 ${modelsOpen ? "rotate-180" : ""}`}
-                                />
-                            </div> */}
+                            <svg
+                                className={`w-3 h-3 transition-transform duration-200 ${modelsOpen ? "rotate-180" : ""}`}
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
                         </button>
                     </div>
 
-                    {modelsOpen && (<div className="absolute top-full left-0 bg-stone-900 p-4 min-w-[160px] z-50 border-t border-white/10 animate-fade-in shadow-xl">
-                        {INIT_MODELOS.map((item) => (
-                            <ModelosDropdown key={item.label} setModelsOpen={setModelsOpen} item={item} />
-                        ))} </div>
-                    )}</li>
-                {navLinks.map((link) => (<li key={link.label} className="box-border flex min-h-0 min-w-0 md:min-h-auto md:min-w-auto">
-                    <a href={link.href}
-                        className="relative items-center box-border gap-x-[10.0982px] flex basis-0 grow h-full justify-start max-w-full min-h-0 min-w-0 -outline-offset-2 w-full z-[2] px-[14.0982px] md:gap-x-[11.7143px] md:min-h-auto md:min-w-auto md:px-[15.7143px] transition-opacity duration-200 hover:opacity-70" >
-                        <div className="box-border min-h-0 min-w-0 md:min-h-auto md:min-w-auto">
-                            {link.label} </div>
-                    </a>
-                </li>
-                ))} </ul>
-            <ul role="list" className="box-border flex shrink-0 justify-start list-none min-h-0 min-w-0 pl-0 md:min-h-auto md:min-w-auto" >
-                <li className="box-border flex min-h-0 min-w-0 md:min-h-auto md:min-w-auto">
-                    {/* <div className="box-border h-full min-h-0 min-w-0 text-left w-full md:min-h-auto md:min-w-auto">
-                        <button className="relative items-center box-border gap-x-[10.0982px] flex basis-0 grow h-full justify-start -outline-offset-2 text-nowrap align-top w-full z-[2] mx-auto px-[14.0982px] md:gap-x-[11.7143px] md:px-[15.7143px] transition-opacity duration-200 hover:opacity-70">
-                            <div className="box-border min-h-0 min-w-0 text-nowrap w-[17.6px] md:min-h-auto md:min-w-auto">
-                                 <img
-                                    src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-3.svg" alt="Buscar" className="box-border h-full text-nowrap align-baseline w-full"
-                                /> 
-
-                                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+                    {modelsOpen && (
+                        <div
+                            className="absolute top-full left-0 bg-stone-900 min-w-[600px] z-50 border-t border-white/10 animate-fade-in shadow-xl origin-top rounded-b-lg overflow-hidden"
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <div className="flex">
+                                <div className="w-[180px] border-r border-white/10 py-3 px-2 flex flex-col">
+                                    {modelosDropdown.map((cat, index) => (
+                                        <button
+                                            key={cat.category}
+                                            onMouseEnter={() => setActiveTab(index)}
+                                            className={`text-left py-2 px-3 text-[15px] transition-all duration-200 rounded ${
+                                                activeTab === index
+                                                    ? "text-white bg-white/10"
+                                                    : "text-white/70 hover:text-white hover:bg-white/5"
+                                            }`}
+                                        >
+                                            {cat.category}
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="flex-1 py-3 px-4 min-w-[380px]">
+                                    <div className="text-[13px] text-white/40 uppercase tracking-wider mb-2 px-1">
+                                        {modelosDropdown[activeTab].category}
+                                    </div>
+                                    <div className="flex flex-col">
+                                        {modelosDropdown[activeTab].models.map((model) => (
+                                            <ModelDropdownItem
+                                                key={`${model.categoryKey}-${model.index}`}
+                                                model={model}
+                                                setModelsOpen={setModelsOpen}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
-                        </button>
-                    </div> */}
+                        </div>
+                    )}
                 </li>
-                <li className="relative items-start box-border flex flex-col justify-center min-h-0 min-w-0 text-center z-[2] md:min-h-auto md:min-w-auto">
-                    <div className="relative box-border min-h-0 min-w-0 md:min-h-auto md:min-w-auto">
-                        {/* <a href="#inicio" className="relative text-white items-center bg-[rgb(14,43,92)] box-border gap-x-2 flex h-full justify-center gap-y-2 align-middle border px-6 py-[14.4px] border-solid border-[rgb(14,43,92)] transition-all duration-200 hover:bg-[rgb(25,60,120)] hover:border-[rgb(25,60,120)] active:scale-95" >
-                            <div className="relative box-border flow-root min-h-0 min-w-0 md:min-h-auto md:min-w-auto"> Cotizar </div>
-                        </a> */}
-                    </div>
-                </li>
+                {desktopNavLinks.map((link) => (
+                    <li key={link.label} className="flex min-h-0 min-w-0">
+                        <Link
+                            to={link.to}
+                            className="relative items-center flex gap-x-[11.7143px] basis-0 grow h-full justify-start max-w-full min-h-0 min-w-0 -outline-offset-2 w-full z-[2] px-[15.7143px] transition-all duration-200 hover:opacity-70"
+                        >
+                            <div className="min-h-0 min-w-0 text-[16px] font-medium">
+                                {link.label}
+                            </div>
+                        </Link>
+                    </li>
+                ))}
             </ul>
-        </nav >
+        </nav>
     );
 }
 
-function ModelosDropdown({ setModelsOpen, item }: { setModelsOpen: (open: boolean) => void; item: { label: string; href: string; key: string } }): JSX.Element {
+function ModelDropdownItem({ model, setModelsOpen }: { model: ModelItem; setModelsOpen: (open: boolean) => void }): JSX.Element {
     const { setModel } = useModelos(s => s)
     const handleClickModelos = () => {
-        setModel(item.key)
+        setModel(model.categoryKey, model.index)
         setModelsOpen(false)
     }
 
     return (
-        <a
-            key={item.label}
-            className="block py-2 px-3 text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors duration-200 rounded"
-            href={item.href}
+        <Link
+            className="flex items-center gap-3 py-2.5 px-3 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 rounded"
+            to="/#modelos"
             onClick={handleClickModelos}
         >
-            {item.label}
-        </a>
+            <img
+                src={model.imageSrc}
+                alt={model.label}
+                className="w-20 h-12 object-contain flex-shrink-0"
+            />
+            <div className="flex-1 min-w-0">
+                <div className="text-[15px] font-medium truncate">
+                    {model.label}
+                    {model.variant && (
+                        <span className="ml-1.5 text-white/50 font-normal">{model.variant}</span>
+                    )}
+                </div>
+                <div className="text-[12px] text-white/40 mt-0.5">
+                    {model.transmission}
+                </div>
+            </div>
+            <svg
+                className="w-4 h-4 text-white/30 flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+            >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </Link>
     )
 }

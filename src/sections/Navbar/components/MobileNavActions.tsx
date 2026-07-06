@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 export const MobileNavActions = () => {
     return (
         <ul
@@ -11,11 +15,7 @@ export const MobileNavActions = () => {
                         className="relative items-center box-border caret-transparent gap-x-[10.0982px] hidden basis-[0%] grow justify-start -outline-offset-2 text-nowrap align-top w-full z-[2] mx-auto py-[10.0982px] md:gap-x-[11.7143px] md:py-[11.7143px]"
                     >
                         <div className="box-border caret-transparent text-nowrap w-[17.6px]">
-                            <img
-                                src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-3.svg"
-                                alt="Icon"
-                                className="box-border caret-transparent h-full text-nowrap align-baseline w-full"
-                            />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className="box-border caret-transparent h-full text-nowrap align-baseline w-full" />
                         </div>
                     </div>
                     <nav className="relative box-border caret-transparent grid grid-cols-[minmax(0px,1fr)] grid-rows-[1fr] min-w-full w-full z-[1] left-[0%] top-[0%]">
@@ -27,11 +27,7 @@ export const MobileNavActions = () => {
                                             type="submit"
                                             className="items-center bg-transparent caret-transparent flex justify-center -outline-offset-2 -ml-4 px-4 py-0"
                                         >
-                                            <img
-                                                src="https://c.animaapp.com/mn3k7y61GKB8dL/assets/icon-6.svg"
-                                                alt="Icon"
-                                                className="box-border caret-transparent align-baseline w-[17.6px]"
-                                            />
+                                            <FontAwesomeIcon icon={faMagnifyingGlass} className="box-border caret-transparent align-baseline w-[17.6px]" />
                                         </button>
                                         <label className="box-border caret-transparent block w-full">
                                             <input
@@ -56,10 +52,10 @@ export const MobileNavActions = () => {
             <li className="relative items-start box-border caret-transparent flex flex-col justify-center text-center z-[2]">
                 <div className="relative box-border caret-transparent">
                     <div className="absolute box-border caret-transparent h-full w-full z-[3] inset-[0%]">
-                        <a
-                            href="/cotizar"
+                        <Link
+                            to="/cotizar"
                             className="absolute box-border caret-transparent block h-full max-w-full outline-offset-[3px] w-full inset-[0%]"
-                        ></a>
+                        ></Link>
                         <button
                             type="button"
                             className="absolute bg-transparent caret-transparent hidden h-full outline-offset-[3px] w-full p-0 inset-[0%]"
