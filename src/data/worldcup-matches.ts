@@ -180,3 +180,4 @@ export const worldcupMatchDays: MatchDay[] = [
 export const API_BASE_URL = "https://worldcup26.ir";
 export const GAMES_URL = `${API_BASE_URL}/get/games`;
 export const TEAMS_URL = `${API_BASE_URL}/get/teams`;
+export const STADIUMS_URL = `${API_BASE_URL}/get/stadiums`;

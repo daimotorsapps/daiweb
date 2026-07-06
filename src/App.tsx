@@ -7,6 +7,7 @@ import { ModelSection } from "./sections/ModelSection";
 import { Navbar } from "./sections/Navbar";
 import { NewsSection } from "./sections/NewsSection";
 import WorldCupCalendar from "./sections/WorldCupCalendar";
+import MatchDetail from "./sections/WorldCupCalendar/MatchDetail";
 import { useScrollToHash } from "./hooks/useScrollToHash";
 
 function HomePage() {
@@ -42,6 +43,7 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/calendario" element={<WorldCupCalendar />} />
+            <Route path="/calendario/:matchId" element={<MatchDetail />} />
           </Routes>
           <section id="footer">
             <Footer />

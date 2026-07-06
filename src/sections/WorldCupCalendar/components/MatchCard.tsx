@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export interface MatchData {
   id: string;
   home: {
@@ -15,7 +17,7 @@ export interface MatchData {
   group: string;
   matchday: string;
   date: string;
-  stadiumId: string;
+  stadiumName: string;
   finished: boolean;
   timeElapsed: string;
   type: string;
@@ -23,6 +25,7 @@ export interface MatchData {
 
 interface MatchCardProps {
   match: MatchData;
+  highlight?: boolean;
 }
 
 const ROUND_LABELS: Record<string, string> = {
@@ -46,8 +49,8 @@ function parseLocalDate(dateStr: string): { timeText: string; dateObj: Date | nu
   };
 }
 
-export default function MatchCard({ match }: MatchCardProps) {
-  const { home, away, group, type, finished, timeElapsed, date } = match;
+export default function MatchCard({ match, highlight }: MatchCardProps) {
+  const { home, away, group, type, finished, timeElapsed, date, stadiumName } = match;
   const { timeText } = parseLocalDate(date);
 
   const isPlayed = finished || timeElapsed === "finished";
@@ -56,7 +59,21 @@ export default function MatchCard({ match }: MatchCardProps) {
   const roundText = type === "group" ? `Grupo ${group}` : (ROUND_LABELS[type] || group);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+    <Link
+      to={`/calendario/${match.id}`}
+      className={`block bg-white rounded-lg shadow-md overflow-hidden border transition-shadow hover:shadow-lg ${
+        highlight ? "animate-pulse-highlight border-yellow-400" : "border-gray-100"
+      }`}
+    >
+      <style>{`
+        @keyframes pulse-highlight {
+          0%, 100% { border-color: #facc15; box-shadow: 0 0 0 2px rgba(250,204,21,0.5); }
+          50% { border-color: transparent; box-shadow: 0 0 0 2px transparent; }
+        }
+        .animate-pulse-highlight {
+          animation: pulse-highlight 0.8s ease-in-out 5;
+        }
+      `}</style>
       <div className="bg-blue-950 text-white px-4 py-2 flex justify-between items-center text-sm">
         <span className="font-medium">Copa Mundial FIFA 2026</span>
         <span className="text-blue-200">{roundText}</span>
@@ -114,7 +131,11 @@ export default function MatchCard({ match }: MatchCardProps) {
             <span className="text-gray-700 font-medium text-xs">{timeText}</span>
           )}
         </div>
+
+        {stadiumName && (
+          <div className="mt-1 text-center text-xs text-gray-400">{stadiumName}</div>
+        )}
       </div>
-    </div>
+    </Link>
   );
 }

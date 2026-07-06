@@ -7,7 +7,7 @@ export const bannerConfig = {
   buttonLink: "/calendario",
   logoSrc: "/img/logofifa.png",
   logoAlt: "Logo FIFA 2026",
-  backgroundSrc: "/img/mundial-bg.jpg",
+  backgroundSrc: "/img/banner-mundial.jpg",
 } as const;
 
 export type BannerConfig = typeof bannerConfig;

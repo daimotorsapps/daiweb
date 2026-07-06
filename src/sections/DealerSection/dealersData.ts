@@ -63,3 +63,28 @@ export const dealerCards: readonly DealerCardData[] = [
     rowSpan: 1,
   },
 ] as const;
+
+
+
+/* Player                        Goals
+
+Erling Haaland - Norway         7
+
+Kylian Mbappé - France          7
+
+Lionel Messi - Argentina        7
+
+Harry Kane - England            6
+
+Ismaïla Sarr - Senegal          4
+
+Jude Bellingham - England       4
+
+Julián Quiñones - Mexico        4
+
+Mikel Oyarzabal - Spain         4
+
+Ousmane Dembélé - France        4
+
+Vinícius Júnior - Brazil        4 */
+

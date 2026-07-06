@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { bannerConfig } from "../data/bannerConfig";
+import { useNextMatch } from "../../../hooks/useNextMatch";
 
 export default function MobileBanner() {
+  const nextMatchId = useNextMatch();
+  const buttonLink = nextMatchId ? `${bannerConfig.buttonLink}?highlight=${nextMatchId}` : bannerConfig.buttonLink;
   return (
     <section className="relative flex flex-col w-full gap-4 py-4 md:hidden">
       <div className="flex items-center gap-3">
@@ -26,7 +29,7 @@ export default function MobileBanner() {
         </span>
 
         <Link
-          to={bannerConfig.buttonLink}
+          to={buttonLink}
           className="bg-white/5 backdrop-blur-sm border border-white/20 text-white px-4 py-2 text-sm rounded-lg font-semibold hover:bg-white/15 hover:border-white/50 hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out"
         >
           {bannerConfig.buttonText}

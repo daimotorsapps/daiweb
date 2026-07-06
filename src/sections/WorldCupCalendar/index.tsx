@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { worldcupMatchDays, GAMES_URL, TEAMS_URL } from "../../data/worldcup-matches";
+import { Link, useSearchParams } from "react-router-dom";
+import { worldcupMatchDays, GAMES_URL, TEAMS_URL, STADIUMS_URL } from "../../data/worldcup-matches";
 import { teamTranslations } from "../../data/team-translations";
 import MatchCard, { type MatchData } from "./components/MatchCard";
 import CalendarPagination from "./components/CalendarPagination";
+import GroupStandings from "./components/GroupStandings";
+import TodayMatches from "./components/TodayMatches";
+import KnockoutBracket from "./components/KnockoutBracket";
 
 interface ApiTeam {
   id: string;
@@ -36,13 +39,24 @@ interface ApiMatch {
   away_team_label?: string;
 }
 
+interface ApiStadium {
+  id: string;
+  name_en: string;
+  city_en: string;
+  capacity: number;
+}
+
 const PAGE_SIZE = 5;
 
 export default function WorldCupCalendar() {
+  const [searchParams] = useSearchParams();
+  const highlightMatchId = searchParams.get("highlight");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [matchesData, setMatchesData] = useState<Record<number, MatchData>>({});
+  const [teamsMap, setTeamsMap] = useState<Record<string, ApiTeam>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"today" | "calendar" | "standings" | "bracket">("today");
 
   const totalDays = worldcupMatchDays.length;
   const visibleDays = worldcupMatchDays.slice(currentIndex, currentIndex + PAGE_SIZE);
@@ -52,27 +66,36 @@ export default function WorldCupCalendar() {
 
     const fetchData = async () => {
       try {
-        const [gamesRes, teamsRes] = await Promise.all([
+        const [gamesRes, teamsRes, stadiumsRes] = await Promise.all([
           fetch(GAMES_URL, { signal: controller.signal }),
           fetch(TEAMS_URL, { signal: controller.signal }),
+          fetch(STADIUMS_URL, { signal: controller.signal }),
         ]);
 
-        if (!gamesRes.ok || !teamsRes.ok) {
+        if (!gamesRes.ok || !teamsRes.ok || !stadiumsRes.ok) {
           throw new Error("Error al cargar datos del Mundial");
         }
 
         const gamesData = await gamesRes.json();
         const teamsData = await teamsRes.json();
+        const stadiumsData = await stadiumsRes.json();
 
         const teamsMap: Record<string, ApiTeam> = {};
         teamsData.teams.forEach((team: ApiTeam) => {
           teamsMap[team.id] = team;
+        });
+        setTeamsMap(teamsMap);
+
+        const stadiumsMap: Record<string, ApiStadium> = {};
+        stadiumsData.stadiums.forEach((stadium: ApiStadium) => {
+          stadiumsMap[stadium.id] = stadium;
         });
 
         const indexed: Record<number, MatchData> = {};
         gamesData.games.forEach((game: ApiMatch) => {
           const homeTeam = teamsMap[game.home_team_id];
           const awayTeam = teamsMap[game.away_team_id];
+          const stadium = stadiumsMap[game.stadium_id];
 
           indexed[Number(game.id)] = {
             id: game.id,
@@ -91,7 +114,7 @@ export default function WorldCupCalendar() {
             group: game.group,
             matchday: game.matchday,
             date: game.local_date,
-            stadiumId: game.stadium_id,
+            stadiumName: stadium?.name_en || "",
             finished: game.finished === "TRUE",
             timeElapsed: game.time_elapsed,
             type: game.type,
@@ -112,6 +135,27 @@ export default function WorldCupCalendar() {
     return () => controller.abort();
   }, []);
 
+  useEffect(() => {
+    if (!highlightMatchId || isLoading) return;
+    const matchData = matchesData[Number(highlightMatchId)];
+    if (!matchData) return;
+
+    const dayIndex = worldcupMatchDays.findIndex((d) =>
+      d.matchIds.includes(Number(highlightMatchId))
+    );
+    if (dayIndex >= 0) {
+      const page = Math.floor(dayIndex / PAGE_SIZE) * PAGE_SIZE;
+      setCurrentIndex(page);
+    }
+
+    setTimeout(() => {
+      const el = document.getElementById(`match-${highlightMatchId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 300);
+  }, [highlightMatchId, isLoading, matchesData]);
+
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - PAGE_SIZE));
   };
@@ -125,19 +169,9 @@ export default function WorldCupCalendar() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 pt-20">
       <div className="bg-blue-950 text-white py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors mb-6"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Volver al inicio
-          </Link>
-
           <div className="flex items-center gap-4 mb-4">
             <img
               src="/img/logofifa.png"
@@ -154,7 +188,38 @@ export default function WorldCupCalendar() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 pt-4 pb-8">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors mb-4"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Volver al inicio
+        </Link>
+
+        <div className="flex gap-2 mb-6 overflow-x-auto pb-1">
+          {([
+            { key: "today" as const, label: "Hoy" },
+            { key: "calendar" as const, label: "Calendario" },
+            { key: "standings" as const, label: "Posiciones" },
+            { key: "bracket" as const, label: "Bracket" },
+          ]).map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors whitespace-nowrap ${
+                activeTab === tab.key
+                  ? "bg-blue-950 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8 text-center">
             <p className="text-red-600 font-medium">{error}</p>
@@ -167,7 +232,9 @@ export default function WorldCupCalendar() {
           </div>
         )}
 
-        {visibleDays.map((day) => (
+        {activeTab === "calendar" && (
+          <>
+            {visibleDays.map((day) => (
           <div key={day.date} className="mb-8">
             <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-950">
               {day.label}
@@ -205,7 +272,11 @@ export default function WorldCupCalendar() {
                   );
                 }
 
-                return <MatchCard key={matchId} match={matchData} />;
+                return (
+                  <div key={matchId} id={`match-${matchId}`}>
+                    <MatchCard match={matchData} highlight={highlightMatchId === String(matchId)} />
+                  </div>
+                );
               })}
             </div>
           </div>
@@ -220,6 +291,22 @@ export default function WorldCupCalendar() {
           currentEnd={currentIndex + PAGE_SIZE}
           total={totalDays}
         />
+          </>
+        )}
+
+        {activeTab === "standings" && !isLoading && (
+          <GroupStandings matches={matchesData} />
+        )}
+
+        {activeTab === "today" && !isLoading && (
+          <TodayMatches matches={matchesData} />
+        )}
+
+        {activeTab === "bracket" && !isLoading && (
+          <KnockoutBracket matches={matchesData} />
+        )}
+
+
       </div>
     </div>
   );

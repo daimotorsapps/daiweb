@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { bannerConfig } from "../data/bannerConfig";
+import { useNextMatch } from "../../../hooks/useNextMatch";
 
 export default function DesktopBanner() {
+  const nextMatchId = useNextMatch();
+  const buttonLink = nextMatchId ? `${bannerConfig.buttonLink}?highlight=${nextMatchId}` : bannerConfig.buttonLink;
   return (
     <div className="relative box-border hidden md:flex w-full items-center justify-between bg-gradient-to-r from-blue-950 via-blue-900 to-blue-950">
       <div className="absolute inset-0 opacity-10">
@@ -44,7 +47,7 @@ export default function DesktopBanner() {
           </div>
 
           <Link
-            to={bannerConfig.buttonLink}
+            to={buttonLink}
             className="bg-white/5 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/15 hover:border-white/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out"
           >
             {bannerConfig.buttonText}
