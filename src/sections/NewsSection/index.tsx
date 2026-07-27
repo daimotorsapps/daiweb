@@ -63,7 +63,7 @@ export const NewsSection = () => {
 
                     <div className="col-span-7 md:col-span-5 rounded-xl flex flex-col mr-0 md:mr-10">
                         <h3 className="text-xl ml-10 font-medium mt-2 md:mt-0 mb-4 font-hyundai_sans cursor-pointer w-50 h-8 text-black bg-transparent border-l-stone-900 w-full border-b-stone-900/20 transition-all duration-200 hover:opacity-70  ">
-                            Novedades de nuestro Instagram
+                            Nuestra ubicación
                         </h3>
                         {/* Área del Mapa */}
                         <iframe

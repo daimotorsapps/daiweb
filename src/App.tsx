@@ -2,12 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DealerSection } from "./sections/DealerSection";
 import { Footer } from "./sections/Footer";
 import { HeroSlider } from "./sections/HeroSlider";
-import InfoGrid from "./sections/InfoGrid";
 import { ModelSection } from "./sections/ModelSection";
 import { Navbar } from "./sections/Navbar";
 import { NewsSection } from "./sections/NewsSection";
-import WorldCupCalendar from "./sections/WorldCupCalendar";
-import MatchDetail from "./sections/WorldCupCalendar/MatchDetail";
 import { useScrollToHash } from "./hooks/useScrollToHash";
 
 function HomePage() {
@@ -16,7 +13,6 @@ function HomePage() {
   return (
     <>
       <main id="main" className="box-border caret-transparent flex basis-[0%] flex-col grow min-h-[auto] min-w-[auto] pt-20">
-        <InfoGrid />
         <section id="inicio">
           <HeroSlider />
         </section>
@@ -42,8 +38,6 @@ export const App = () => {
           <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/calendario" element={<WorldCupCalendar />} />
-            <Route path="/calendario/:matchId" element={<MatchDetail />} />
           </Routes>
           <section id="footer">
             <Footer />
