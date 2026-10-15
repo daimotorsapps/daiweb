@@ -1,12 +1,14 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, type KeyboardEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { slides } from "../../data/slides";
+import { forceReflow } from "../../utils/dom";
+
+const AUTOPLAY_INTERVAL_MS = 5000;
 
 export const HeroSlider = () => {
     const [current, setCurrent] = useState(0);
-    const [isTransitioning, setIsTransitioning] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const isTransitioningRef = useRef(false);
     const trackRef = useRef<HTMLDivElement>(null);
 
     // Create slides with clones for infinite loop
@@ -16,23 +18,23 @@ export const HeroSlider = () => {
         { ...slides[0], isClone: true, cloneId: 'next' }
     ];
 
-    const goTo = useCallback((idx: number) => {
-        if (isTransitioning) return;
-        setIsTransitioning(true);
-        setCurrent(idx);
-    }, [isTransitioning]);
+    const startTransition = (resolveNext: (prev: number) => number) => {
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
+        setCurrent(resolveNext);
+    };
 
-    const next = useCallback(() => {
-        if (isTransitioning) return;
-        setIsTransitioning(true);
-        setCurrent((prev) => prev + 1);
-    }, [isTransitioning]);
+    const goTo = (idx: number) => {
+        startTransition(() => idx);
+    };
 
-    const prev = useCallback(() => {
-        if (isTransitioning) return;
-        setIsTransitioning(true);
-        setCurrent((prev) => prev - 1);
-    }, [isTransitioning]);
+    const next = () => {
+        startTransition((prev) => prev + 1);
+    };
+
+    const prev = () => {
+        startTransition((prev) => prev - 1);
+    };
 
     // Handle transition end for infinite loop
     useEffect(() => {
@@ -44,21 +46,18 @@ export const HeroSlider = () => {
                 // At cloneFirst (index slides.length), jump to real slide 0
                 track.style.transition = 'none';
                 track.style.transform = `translateX(-100%)`;
-                track.offsetHeight; // force reflow
+                forceReflow(track);
                 track.style.transition = '';
                 setCurrent(0);
-                setIsTransitioning(false);
             } else if (current === -1) {
                 // At cloneLast (index -1), jump to real last slide
                 track.style.transition = 'none';
                 track.style.transform = `translateX(-${slides.length * 100}%)`;
-                track.offsetHeight;
+                forceReflow(track);
                 track.style.transition = '';
                 setCurrent(slides.length - 1);
-                setIsTransitioning(false);
-            } else {
-                setIsTransitioning(false);
             }
+            isTransitioningRef.current = false;
         };
 
         track.addEventListener('transitionend', handleTransitionEnd);
@@ -67,26 +66,25 @@ export const HeroSlider = () => {
 
     // Autoplay
     useEffect(() => {
-        timerRef.current = setInterval(() => {
-            if (!isTransitioning) next();
-        }, 5000);
-        return () => {
-            if (timerRef.current) clearInterval(timerRef.current);
-        };
-    }, [next, isTransitioning]);
+        const timer = setInterval(() => {
+            if (isTransitioningRef.current) return;
+            isTransitioningRef.current = true;
+            setCurrent((prev) => prev + 1);
+        }, AUTOPLAY_INTERVAL_MS);
+        return () => clearInterval(timer);
+    }, []);
 
-    // Keyboard navigation
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "ArrowLeft") prev();
-            if (e.key === "ArrowRight") next();
-        };
-        window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [next, prev]);
+    const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === "ArrowLeft") prev();
+        if (e.key === "ArrowRight") next();
+    };
 
     return (
-        <div className="relative w-full overflow-hidden h-[calc(56.25vw-200px)]">
+        <div
+            className="relative w-full overflow-hidden aspect-[4/5] md:aspect-video"
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+        >
             <section
                 role="group"
                 aria-label="Hero slider"
@@ -109,7 +107,7 @@ export const HeroSlider = () => {
                                 src={slide.mobileSrc}
                                 alt={slide.alt}
                                 loading="lazy"
-                                className="absolute inset-0 h-full w-full object-contain md:hidden"
+                                className="absolute inset-0 h-full w-full object-cover md:hidden"
                                 style={{ animation: (!slide.isClone && index - 1 === current) ? "hero-reveal 0.9s ease-out forwards" : "none" }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
@@ -142,8 +140,12 @@ export const HeroSlider = () => {
                         onClick={() => goTo(i)}
                         aria-label={`Ir a diapositiva ${i + 1}`}
                         aria-current={i === (current % slides.length + slides.length) % slides.length ? "true" : undefined}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${i === (current % slides.length + slides.length) % slides.length ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
-                    />
+                        className="p-2 -m-2"
+                    >
+                        <span
+                            className={`block h-1.5 rounded-full transition-all duration-300 ${i === (current % slides.length + slides.length) % slides.length ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
+                        />
+                    </button>
                 ))}
             </div>
         </div>

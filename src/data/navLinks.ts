@@ -1,14 +1,4 @@
-export const mobileNavLinks = [
-    { to: "/#modelos", label: "Modelos" },
-    { to: "/#modelos", label: "Comparar" },
-    { to: "/#inicio", label: "Financiamiento" },
-    { to: "/#noticias", label: "Noticias" },
-    { to: "/#inicio", label: "Nosotros" },
-    { to: "/#concesionarios", label: "Concesionarios" },
-];
-
 export const desktopNavLinks = [
-    { to: "/calendario", label: "Calendario" },
     { to: "/#nosotros", label: "Nosotros" },
     { to: "/#novedades", label: "Contáctanos" },
 ];

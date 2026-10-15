@@ -9,7 +9,7 @@ export const DealerCard = ({ data, index }: DealerCardProps) => {
   const isHero = data.variant === 'hero';
 
   const placementClasses = (() => {
-    if (isHero) return 'md:col-start-1 md:row-start-1 md:col-span-2 md:row-span-2';
+    if (isHero) return 'col-span-2 md:col-start-1 md:row-start-1 md:col-span-2 md:row-span-2';
     const key = `${data.colStart}-${data.rowStart}`;
     const map: Record<string, string> = {
       '3-1': 'md:col-start-3 md:row-start-1 md:col-span-1 md:row-span-1',
@@ -24,8 +24,7 @@ export const DealerCard = ({ data, index }: DealerCardProps) => {
     <article
       className={`
         relative group rounded-xl overflow-hidden opacity-0 animate-fade-in-up
-        ${isHero ? '' : 'aspect-[3/4]'}
-        ${isHero ? 'min-h-[500px] md:min-h-[700px]' : 'min-h-[350px] md:min-h-[400px]'}
+        ${isHero ? 'aspect-[3/4] md:aspect-auto md:min-h-[700px]' : 'aspect-[3/4] md:aspect-auto md:min-h-[400px]'}
         ${placementClasses}
       `}
       style={{ animationDelay: `${index * 100}ms` }}

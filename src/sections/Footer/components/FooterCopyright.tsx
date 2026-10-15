@@ -40,15 +40,6 @@ className="box-border caret-transparent block max-w-full min-h-[auto] min-w-[aut
  </div>
  </a>
  </div>
-<div
- role="listitem"
-className="box-border caret-transparent flex min-h-[auto] min-w-[auto]"
- >
- <a
- href="#"
-className="box-border caret-transparent block max-w-full min-h-[auto] min-w-[auto] outline-offset-[3px] p-2"
- ></a>
- </div>
  </div>
  </div>
  </div>

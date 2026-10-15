@@ -1,9 +1,9 @@
 {
  "version": "1.0.0",
- "source": "./index.html",
  "type": "module",
  "name": "daiweb",
  "description": "Dai Motors - Hyundai dealership website",
+ "packageManager": "pnpm@10.34.6",
  "scripts": {
   "dev": "vite",
   "build": "vite build",
@@ -40,5 +40,10 @@
   "typescript": "^6.0.3",
   "typescript-eslint": "^8.62.1",
   "vite": "6.3.5"
+ },
+ "pnpm": {
+  "onlyBuiltDependencies": [
+   "esbuild"
+  ]
  }
 }

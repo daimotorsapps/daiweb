@@ -34,7 +34,7 @@ export const App = () => {
   return (
     <BrowserRouter>
       <div className="text-stone-900 text-base not-italic normal-nums font-normal accent-auto bg-gray-200 box-border caret-transparent block tracking-[normal] leading-6 list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-hyundai_sans">
-        <div className="box-border caret-transparent flex flex-col min-h-[1000px] overflow-clip">
+        <div className="box-border caret-transparent flex flex-col min-h-dvh overflow-x-clip">
           <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />

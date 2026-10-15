@@ -1,15 +1,16 @@
+import type { ReactNode } from "react";
+
 export type ModelCardProps = {
-    rootClass?: string;
     modelName: string;
     subTitle?: string;
     imageSrc: string;
-    imageSizes?: string;
     trimName: string;
     transmission: string;
     motor: string;
     potencia: string;
     torque: string;
     fichaTecnicaHref: string;
+    navContent?: ReactNode;
 };
 
 function SpecCell({ label, value, isLast }: { label: string; value: string; isLast?: boolean }) {
@@ -22,7 +23,7 @@ function SpecCell({ label, value, isLast }: { label: string; value: string; isLa
                 {value}
             </p>
             {!isLast && (
-                <div className="absolute bg-white/30 h-[60px] w-px right-0" />
+                <div className="absolute bg-white/30 h-px w-full left-0 bottom-0 md:h-[60px] md:w-px md:left-auto md:right-0 md:bottom-auto md:top-1/2 md:-translate-y-1/2" />
             )}
         </div>
     );
@@ -32,7 +33,7 @@ export const ModelCard = (props: ModelCardProps) => {
     return (
         <div
             role="listitem"
-            className={`relative shrink-0 list-none w-[330px] mr-8 md:w-full md:mr-0 ${props.rootClass ?? ""}`}
+            className="relative shrink-0 list-none w-full"
         >
             <div className="flex flex-col items-center justify-center w-full">
                 <div className="flex flex-col items-center w-full">
@@ -51,13 +52,21 @@ export const ModelCard = (props: ModelCardProps) => {
                         )}
                     </div>
                 </div>
-                <img
-                    src={props.imageSrc}
-                    alt={`${props.modelName} ${props.subTitle ?? ""}`}
-                    loading="lazy"
-                    {...(props.imageSizes ? { sizes: props.imageSizes } : {})}
-                    className="relative max-w-[480px] object-cover align-bottom w-full z-[3] -mt-8 md:max-w-screen-sm md:-mt-28"
-                />
+                <div className="relative flex justify-center w-full -mt-8 md:-mt-28">
+                    <img
+                        src={props.imageSrc}
+                        alt={`${props.modelName} ${props.subTitle ?? ""}`}
+                        width={700}
+                        height={492}
+                        loading="lazy"
+                        className="relative max-w-[480px] object-cover align-bottom w-full z-[3] md:max-w-screen-sm"
+                    />
+                    {props.navContent && (
+                        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 w-full flex justify-between items-center z-[1]">
+                            {props.navContent}
+                        </div>
+                    )}
+                </div>
                 <div className="relative bg-stone-900 grid grid-cols-1 md:grid-cols-5 max-w-[1048px] w-full z-[10] -mt-4 md:-mt-20">
                     <div className="bg-white flex flex-col items-end justify-between text-right p-5 md:p-6">
                         <p className="text-[22px] font-medium leading-[24px] uppercase mb-5 md:text-[24px] md:leading-[26px] md:mb-6 w-full text-center md:text-right">

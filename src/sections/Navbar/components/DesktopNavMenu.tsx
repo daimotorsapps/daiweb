@@ -64,7 +64,7 @@ export const DesktopNavMenu = () => {
 
                     {modelsOpen && (
                         <div
-                            className="absolute top-full left-0 bg-stone-900 min-w-[600px] z-50 border-t border-white/10 animate-fade-in shadow-xl origin-top rounded-b-lg overflow-hidden"
+                            className="absolute top-full left-0 bg-stone-900 min-w-[380px] lg:min-w-[600px] z-50 border-t border-white/10 animate-fade-in shadow-xl origin-top rounded-b-lg overflow-hidden"
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
                         >
@@ -84,7 +84,7 @@ export const DesktopNavMenu = () => {
                                         </button>
                                     ))}
                                 </div>
-                                <div className="flex-1 py-3 px-4 min-w-[380px]">
+                                <div className="flex-1 py-3 px-4 min-w-[280px] lg:min-w-[380px]">
                                     <div className="text-[13px] text-white/40 uppercase tracking-wider mb-2 px-1">
                                         {modelosDropdown[activeTab].category}
                                     </div>
@@ -120,7 +120,7 @@ export const DesktopNavMenu = () => {
 }
 
 function ModelDropdownItem({ model, setModelsOpen }: { model: ModelItem; setModelsOpen: (open: boolean) => void }): JSX.Element {
-    const { setModel } = useModelos(s => s)
+    const setModel = useModelos(s => s.setModel)
     const handleClickModelos = () => {
         setModel(model.categoryKey, model.index)
         setModelsOpen(false)

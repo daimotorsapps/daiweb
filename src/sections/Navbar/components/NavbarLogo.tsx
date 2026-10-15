@@ -16,7 +16,9 @@ export const NavbarLogo = (props: NavbarLogoProps) => {
                 <img
                     src="/img/logo-dai.png"
                     alt="Dai Motors"
-                    className="h-20 align-baseline w-full"
+                    width={2835}
+                    height={1701}
+                    className="h-20 w-full object-contain align-baseline"
                 />
             </div>
         </Link>
