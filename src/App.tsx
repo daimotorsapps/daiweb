@@ -13,6 +13,7 @@ function HomePage() {
   return (
     <>
       <main id="main" className="box-border caret-transparent flex basis-[0%] flex-col grow min-h-[auto] min-w-[auto] pt-20">
+        <h1 className="sr-only">Dai Motors, S.A. — Concesionario Hyundai en Maracaibo, Venezuela</h1>
         <section id="inicio">
           <HeroSlider />
         </section>
